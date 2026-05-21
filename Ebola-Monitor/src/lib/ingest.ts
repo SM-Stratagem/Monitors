@@ -500,6 +500,8 @@ const OFFICIAL_PAGES = [
   { source: "ECDC Threats", url: "https://www.ecdc.europa.eu/en/threats-and-outbreaks/reports-and-data/weekly-threats", credibility: 94 },
   { source: "PAHO Ebola", url: "https://www.paho.org/en/topics/ebola", credibility: 92 },
   { source: "Médecins Sans Frontières Ebola", url: "https://www.msf.org/ebola", credibility: 90 },
+  { source: "Africa CDC Ebola", url: "https://africacdc.org/disease/ebola-virus-disease/", credibility: 95 },
+  { source: "Africa CDC Outbreak Bulletin", url: "https://africacdc.org/resource-type/outbreak-brief/", credibility: 95 },
   { source: "ProMED", url: "https://promedmail.org/promed-posts/feed/", credibility: 92 },
 ];
 
@@ -576,13 +578,13 @@ const CURATED_CASES = [
   },
 ];
 
-// ===== SHORE STOP DATA =====
+// ===== KEY RESPONSE LOCATIONS =====
 const SHORE_STOPS = [
-  { name: "South Georgia Island", dates: "Apr 4-7", description: "Shore excursions, penguin colonies, historic Grytviken" },
-  { name: "Tristan da Cunha", dates: "Apr 13-16", description: "Inaccessible & Nightingale Islands, 6 residents boarded" },
-  { name: "Gough Island", dates: "Apr 17", description: "UNESCO World Heritage site, weather station only" },
-  { name: "St. Helena", dates: "Apr 21-24", description: "32 guests disembarked, Dutch index couple departed" },
-  { name: "Ascension Island", dates: "Apr 27", description: "Medevac point, RAF base, 2 guests evacuated" },
+  { name: "Goma, North Kivu, DRC", dates: "Mar 2026", description: "Outbreak epicenter. Index case identified at Bushu Health Center. WHO ETU and MSF teams operational." },
+  { name: "Bukavu, South Kivu, DRC", dates: "Apr 2026", description: "Secondary cluster. DRC Ministry of Health and WHO deployed rapid response teams. Ring vaccination underway." },
+  { name: "Conakry, Guinea", dates: "Apr 2026", description: "Cross-border spread confirmed via market trader. Guinea Ministry of Health declared health alert. MSF Ebola Treatment Centre activated." },
+  { name: "Freetown, Sierra Leone", dates: "Apr 2026", description: "Returned traveler from Guinea isolated at Connaught Hospital. Sierra Leone EPA activated Emergency Operations Centre." },
+  { name: "Monrovia, Liberia", dates: "Apr 2026", description: "Cross-border trader confirmed at ELWA Hospital. Liberia MOHSW activated National Incident Management System." },
 ];
 
 // ===== REPATRIATION FLIGHTS =====
@@ -694,8 +696,6 @@ export function inferCountry(text: string): string | null {
     "mexico": "Mexico", "philippines": "Philippines", "malaysia": "Malaysia",
     "indonesia": "Indonesia", "thailand": "Thailand",
     "south africa": "South Africa", "israel": "Israel", "lebanon": "Lebanon",
-    "tristan da cunha": "United Kingdom", "saint helena": "United Kingdom",
-    "tenerife": "Spain", "granadilla": "Spain",
     "johannesburg": "South Africa", "cape town": "South Africa",
     "omaha": "United States", "nebraska": "United States",
     "paris": "France", "london": "United Kingdom", "madrid": "Spain",
@@ -708,17 +708,21 @@ export function inferCountry(text: string): string | null {
     "copenhagen": "Denmark", "bratislava": "Slovakia",
     "bucharest": "Romania", "sofia": "Bulgaria",
     "conakry": "Guinea", "freetown": "Sierra Leone", "monrovia": "Liberia",
-    "south atlantic": "International Waters", "cruise ship": "International Waters",
+    "goma": "Democratic Republic of Congo", "bukavu": "Democratic Republic of Congo",
+    "kinshasa": "Democratic Republic of Congo", "kisangani": "Democratic Republic of Congo",
+    "bunia": "Democratic Republic of Congo", "beni": "Democratic Republic of Congo",
+    "kampala": "Uganda", "juba": "South Sudan", "kigali": "Rwanda",
+    "nairobi": "Kenya", "addis ababa": "Ethiopia", "accra": "Ghana",
+    "abidjan": "Ivory Coast", "bamako": "Mali", "niamey": "Niger",
+    "n'djamena": "Chad", "bangui": "Central African Republic",
+    "brazzaville": "Republic of Congo", "yaoundé": "Cameroon",
+    "luanda": "Angola", "lusaka": "Zambia", "harare": "Zimbabwe",
+    "lagos": "Nigeria", "abuja": "Nigeria", "kano": "Nigeria",
+    "cairo": "Egypt", "dakar": "Senegal",
     "manila": "Philippines", "jakarta": "Indonesia", "bangkok": "Thailand",
-    "kuala lumpur": "Malaysia", "hanoi": "Vietnam",
-    "lagos": "Nigeria", "nairobi": "Kenya", "cairo": "Egypt",
-    "bogota": "Colombia", "lima": "Peru", "santiago": "Chile",
-    "buenos aires": "Argentina", "mendoza": "Argentina",
-    "mexico city": "Mexico", "guatemala": "Guatemala", "panama": "Panama",
-    "sydney": "Australia", "melbourne": "Australia", "wellington": "New Zealand",
+    "kuala lumpur": "Malaysia", "sydney": "Australia", "melbourne": "Australia",
     "edinburgh": "United Kingdom", "manchester": "United Kingdom",
-    "bagotville": "Canada", "saguenay": "Canada", "quebec": "Canada",
-    "eindhoven": "Netherlands",
+    "bagotville": "Canada", "quebec": "Canada",
     "torrejón": "Spain", "le bourget": "France",
     "nebraska biocontainment": "United States",
   };
@@ -735,15 +739,16 @@ export function inferRegion(country: string | null): string {
   if (!country) return "Global";
   if (["United States", "Canada", "Mexico"].includes(country)) return "North America";
   if (["Argentina", "Chile", "Brazil", "Colombia", "Peru", "Bolivia", "Paraguay", "Uruguay"].includes(country)) return "South America";
-  if (["China", "Japan", "Australia", "New Zealand", "India", "South Korea"].includes(country)) return "Asia Pacific";
+  if (["China", "Japan", "Australia", "New Zealand", "India", "South Korea", "Philippines", "Indonesia", "Malaysia", "Thailand"].includes(country)) return "Asia Pacific";
   if (["United Kingdom", "France", "Germany", "Spain", "Italy", "Netherlands", "Belgium", "Sweden", "Norway", "Ireland", "Turkey"].includes(country)) return "Europe";
-  if (["South Africa", "Nigeria", "Kenya", "Egypt"].includes(country)) return "Africa";
+  if (["Democratic Republic of Congo", "Republic of Congo", "Guinea", "Sierra Leone", "Liberia", "Nigeria", "Uganda", "South Sudan", "Rwanda", "Kenya", "Tanzania", "Ethiopia", "Ivory Coast", "Ghana", "Senegal", "Mali", "Niger", "Chad", "Cameroon", "Central African Republic", "Angola", "Zambia", "Zimbabwe", "South Africa", "Egypt", "Sudan"].includes(country)) return "Africa";
   return "Global";
 }
 
 export function scoreSourceCredibility(source: string): number {
   const map: Record<string, number> = {
-    "who": 98, "cdc": 96, "ecdc": 94, "promed": 92, "reuters": 92,
+    "who": 98, "africa cdc": 95, "cdc": 96, "ecdc": 94, "promed": 92, "reuters": 92,
+    "reliefweb": 90, "msf": 90, "al jazeera": 85,
     "bbc": 88, "ap news": 88, "medical xpress": 82, "google news": 80, "newsapi": 75,
   };
   const lower = source.toLowerCase();
@@ -754,7 +759,7 @@ export function scoreSourceCredibility(source: string): number {
 }
 
 export function isEbolaRelated(text: string): boolean {
-  return /\bebola\b|\bfilovirus\b|\bhemorrhagic\s*fever\b|\bevd\b|\zebolavirus\b/i.test(text);
+  return /\bebola\b|\bfilovirus\b|\bhemorrhagic\s*fever\b|\bevd\b|\bebolavirus\b/i.test(text);
 }
 
 function absolutizeUrl(baseUrl: string, maybeRelative: string): string {
@@ -861,9 +866,10 @@ async function fetchFromSerpApi(): Promise<ScrapedSignal[]> {
   const timeoutMs = envInt("INGEST_HTTP_TIMEOUT_MS", 12_000);
   const queries = [
     "ebola outbreak 2026",
-    "ebola virus disease africa",
-    "ebola cases deaths",
+    "ebola DRC Congo outbreak cases",
+    "ebola Guinea Sierra Leone Liberia",
     "ebola travel advisory CDC WHO",
+    "Zaire ebolavirus West Africa",
   ];
 
   for (const query of queries) {
@@ -913,6 +919,8 @@ async function fetchFromSerpApi(): Promise<ScrapedSignal[]> {
 const REDDIT_SUBREDDITS = [
   { name: "Ebola", query: "", credibility: 75, description: "Dedicated Ebola community" },
   { name: "worldnews", query: "ebola OR ebola virus OR hemorrhagic fever africa", credibility: 70, description: "Global news subreddit" },
+  { name: "infectious", query: "ebola OR EVD OR hemorrhagic fever", credibility: 72, description: "Infectious disease community" },
+  { name: "medicine", query: "ebola OR Zaire ebolavirus OR Sudan ebolavirus", credibility: 74, description: "Medical community" },
 ];
 
 async function fetchFromReddit(): Promise<ScrapedSignal[]> {

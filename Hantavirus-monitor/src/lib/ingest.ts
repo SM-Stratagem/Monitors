@@ -632,6 +632,8 @@ async function fetchFromSerpApi(): Promise<ScrapedSignal[]> {
 const REDDIT_SUBREDDITS = [
   { name: "hantavirus", query: "", credibility: 75, description: "Dedicated hantavirus community" },
   { name: "worldnews", query: "hantavirus OR hanta virus OR hemorrhagic fever cruise", credibility: 70, description: "Global news subreddit" },
+  { name: "infectious", query: "hantavirus OR Andes virus OR hantavirus pulmonary syndrome", credibility: 72, description: "Infectious disease community" },
+  { name: "medicine", query: "hantavirus OR MV Hondius OR Andes virus", credibility: 74, description: "Medical community" },
 ];
 
 async function fetchFromReddit(): Promise<ScrapedSignal[]> {
