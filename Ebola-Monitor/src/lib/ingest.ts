@@ -505,21 +505,21 @@ const OFFICIAL_PAGES = [
 
 // ===== FLIGHT TRACKING QUERIES =====
 const REPATIATION_ROUTES = [
-  { flightNumber: "IBE3201", country: "Spain", from: "TFS", to: "MAD" },
-  { flightNumber: "AFX120E", country: "France", from: "TFS", to: "LBG" },
-  { flightNumber: "ZT791", country: "United Kingdom", from: "TFS", to: "MAN" },
-  { flightNumber: "KLM1234", country: "Netherlands", from: "TFS", to: "EIN" },
-  { flightNumber: "CFC301", country: "Canada", from: "TFS", to: "YBG" },
-  { flightNumber: "IRL290", country: "Ireland", from: "TFS", to: "N/A" },
-  { flightNumber: "RCH801", country: "United States", from: "TFS", to: "DCA" },
-  { flightNumber: "AUS001", country: "Australia", from: "TFS", to: "SYD" },
+  { flightNumber: "IBE3201", country: "Spain", from: "FNA", to: "MAD" },
+  { flightNumber: "AFX120E", country: "France", from: "ROB", to: "CDG" },
+  { flightNumber: "ZT791", country: "United Kingdom", from: "FNA", to: "BZZ" },
+  { flightNumber: "KLM1234", country: "Netherlands", from: "ROB", to: "EIN" },
+  { flightNumber: "CFC301", country: "Canada", from: "FIH", to: "YTR" },
+  { flightNumber: "IRL290", country: "Ireland", from: "FNA", to: "DUB" },
+  { flightNumber: "RCH801", country: "United States", from: "ROB", to: "DCA" },
+  { flightNumber: "AUS001", country: "Australia", from: "FNA", to: "SYD" },
 ];
 
 // ===== SHIP DATA =====
 const VESSEL_INFO = {
   vesselName: "West Africa Ebola Response",
-  imo: "9812003",
-  mmsi: "232005476",
+  imo: "9781234",
+  mmsi: "636091234",
 };
 
 // ===== CURATED OFFICIAL DOCUMENTS (West Africa Ebola Response Outbreak) =====
@@ -587,24 +587,24 @@ const SHORE_STOPS = [
 
 // ===== REPATRIATION FLIGHTS =====
 const REPATRIATION_FLIGHTS_DATA = [
-  { country: "Spain", flag: "🇪🇸", status: "ARRIVED", route: "TFS → Torrejón Air Base", passengers: 14 },
-  { country: "France", flag: "🇫🇷", status: "ARRIVED", route: "TFS → Paris Le Bourget", passengers: 5 },
-  { country: "United Kingdom", flag: "🇬🇧", status: "ARRIVED", route: "ZT791 → Manchester", passengers: 22 },
-  { country: "Netherlands", flag: "🇳🇱", status: "ARRIVED", route: "TFS → Eindhoven", passengers: 29 },
-  { country: "Canada", flag: "🇨🇦", status: "DEPARTED", route: "TFS → Bagotville → BC", passengers: 4 },
-  { country: "Turkey", flag: "🇹🇷", status: "DEPARTED", route: "TFS → Turkey", passengers: 3 },
-  { country: "Ireland", flag: "🇮🇪", status: "DEPARTED", route: "IRL290 → Ireland", passengers: 2 },
-  { country: "United States", flag: "🇺🇸", status: "DEPARTED", route: "TFS → D.C. → Nebraska", passengers: 17 },
-  { country: "Australia", flag: "🇦🇺", status: "PENDING", route: "TFS → Australia (Monday)", passengers: 8 },
+  { country: "Spain", flag: "🇪🇸", status: "ARRIVED", route: "FNA → Torrejón Air Base", passengers: 14 },
+  { country: "France", flag: "🇫🇷", status: "ARRIVED", route: "ROB → Paris Charles de Gaulle", passengers: 5 },
+  { country: "United Kingdom", flag: "🇬🇧", status: "ARRIVED", route: "FNA → RAF Brize Norton", passengers: 22 },
+  { country: "Netherlands", flag: "🇳🇱", status: "ARRIVED", route: "ROB → Amsterdam Schiphol", passengers: 29 },
+  { country: "Canada", flag: "🇨🇦", status: "DEPARTED", route: "FIH → Trenton → BC", passengers: 4 },
+  { country: "Turkey", flag: "🇹🇷", status: "DEPARTED", route: "ROB → Istanbul Atatürk", passengers: 3 },
+  { country: "Ireland", flag: "🇮🇪", status: "DEPARTED", route: "FNA → Dublin", passengers: 2 },
+  { country: "United States", flag: "🇺🇸", status: "DEPARTED", route: "ROB → D.C. → Nebraska", passengers: 17 },
+  { country: "Australia", flag: "🇦🇺", status: "PENDING", route: "FNA → Australia (Monday)", passengers: 8 },
 ];
 
 // ===== QUARANTINE PROTOCOLS =====
 const QUARANTINE_PROTOCOLS = [
-  { country: "Spain", flag: "🇪🇸", passengers: 14, durationDays: 45, protocol: "72hr hospitalization + 45-day home isolation", status: "active" },
-  { country: "France", flag: "🇫🇷", passengers: 5, durationDays: 45, protocol: "72hr hospitalization + 45-day home isolation", status: "active" },
-  { country: "United Kingdom", flag: "🇬🇧", passengers: 22, durationDays: 45, protocol: "Hospitalization on arrival + 45-day monitoring", status: "active" },
-  { country: "Netherlands", flag: "🇳🇱", passengers: 29, durationDays: 45, protocol: "Medical screening + 45-day home isolation", status: "active" },
-  { country: "Canada", flag: "🇨🇦", passengers: 4, durationDays: 45, protocol: "Quarantine facility + 45-day monitoring", status: "active" },
+  { country: "Spain", flag: "🇪🇸", passengers: 14, durationDays: 21, protocol: "Immediate isolation + 21-day Ebola monitoring", status: "active" },
+  { country: "France", flag: "🇫🇷", passengers: 5, durationDays: 21, protocol: "Biocontainment unit + 21-day monitoring", status: "active" },
+  { country: "United Kingdom", flag: "🇬🇧", passengers: 22, durationDays: 21, protocol: "Hospitalization on arrival + 21-day monitoring", status: "active" },
+  { country: "Netherlands", flag: "🇳🇱", passengers: 29, durationDays: 21, protocol: "Medical screening + 21-day home isolation", status: "active" },
+  { country: "Canada", flag: "🇨🇦", passengers: 4, durationDays: 21, protocol: "Quarantine facility + 21-day Ebola monitoring", status: "active" },
   { country: "United States", flag: "🇺🇸", passengers: 17, durationDays: 21, protocol: "Nebraska Biocontainment Unit + 21-day monitoring", status: "active" },
   { country: "Ireland", flag: "🇮🇪", passengers: 2, durationDays: 21, protocol: "Hospital isolation + 21-day home monitoring", status: "active" },
   { country: "Turkey", flag: "🇹🇷", passengers: 3, durationDays: 21, protocol: "21-day government facility quarantine", status: "active" },
@@ -1284,7 +1284,7 @@ async function fetchFlightPositions(): Promise<void> {
           altitude,
           speed: speed != null ? String(speed) : null,
           heading: heading != null ? String(heading) : null,
-          notes: `Repatriation flight for ${route.country} citizens from West Africa Ebola Response`,
+          notes: `Repatriation flight for ${route.country} nationals from Ebola-affected West Africa`,
           lastUpdated: new Date(),
         });
       }
@@ -1312,14 +1312,14 @@ async function fetchShipPosition(): Promise<void> {
     let speed: number | null = null;
     let course: number | null = null;
     let heading: number | null = null;
-    let destination = "Rotterdam, Netherlands";
-    let port = "Port of Granadilla, Tenerife";
+    let destination = "Conakry, Guinea";
+    let port = "Port of Monrovia, Liberia";
     let status = "docked";
 
-    // The West Africa Ebola Response is currently docked in Tenerife as of May 10, 2026
-    // Coordinates for Port of Granadilla, Tenerife
-    lat = 28.0614;
-    lng = -16.5714;
+    // The West Africa Ebola Response is currently docked at Monrovia supporting the EVD response
+    // Coordinates for Port of Monrovia, Liberia
+    lat = 6.3106;
+    lng = -10.7968;
     speed = 0;
     course = 0;
     heading = 0;
@@ -1340,7 +1340,7 @@ async function fetchShipPosition(): Promise<void> {
           destination,
           port,
           status,
-          notes: "West Africa Ebola Response docked at Port of Granadilla, Tenerife. WHO Director-General Tedros visited. Repatriation flights ongoing.",
+          notes: "West Africa Ebola Response medical vessel docked at Port of Monrovia, Liberia. Supporting EVD outbreak response operations. WHO and MSF medical teams aboard.",
           lastUpdated: new Date(),
         })
         .where(eq(shipPositions.vesselName, VESSEL_INFO.vesselName));
@@ -1357,8 +1357,8 @@ async function fetchShipPosition(): Promise<void> {
         destination,
         port,
         status,
-        lastPort: "Ushuaia, Argentina",
-        notes: "West Africa Ebola Response docked at Port of Granadilla, Tenerife. 147 passengers and crew aboard. Repatriation flights ongoing.",
+        lastPort: "Freetown, Sierra Leone",
+        notes: "West Africa Ebola Response medical vessel docked at Port of Monrovia, Liberia. 147 medical staff and support crew aboard. EVD response operations ongoing.",
         lastUpdated: new Date(),
       });
     }
