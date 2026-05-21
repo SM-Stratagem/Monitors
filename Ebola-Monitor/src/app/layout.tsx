@@ -91,6 +91,7 @@ export async function generateMetadata(): Promise<Metadata> {
     referrer: "origin-when-cross-origin",
     other: {
       ...(updatedIso ? { "last-modified": updatedIso } : {}),
+      "google-adsense-account": "ca-pub-2896982474245057",
       "ai-content-declaration": "human-authored",
       "citation-title": title,
       "citation-online-date": updatedIso ? updatedIso.split("T")[0] : "2026-05-01",
