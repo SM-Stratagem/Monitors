@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1778422594074,
+      "tag": "0000_flimsy_owl",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1778491794211,
+      "tag": "0001_shallow_morgan_stark",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1778503654735,
+      "tag": "0002_add_ingest_runs",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1778504333975,
+      "tag": "0003_ingest_pipeline",
+      "breakpoints": true
+    }
+  ]
+}

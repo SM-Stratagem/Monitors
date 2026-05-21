@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google tag (gtag.js) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BREGB47YMK');
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BREGB47YMK"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7740708597836782" crossorigin="anonymous"></script>
+  <title>Hantavirus Outbreak Tracker — MV Hondius Cruise Ship 2026</title>
+  <!-- Canonical -->
+  <link rel="canonical" href="https://hantavirus.up.railway.app/">
+  <!-- Search -->
+  <meta name="description" content="Live hantavirus tracker for the 2026 MV Hondius cruise ship outbreak. 3 deaths, 35 cases, 14 countries. Repatriation flights tracked, quarantine countdowns, transmission chains. Updated continuously.">
+  <meta name="keywords" content="hantavirus, MV Hondius, hantavirus 2026, cruise ship outbreak, Andes virus, hantavirus tracker, hantavirus cases, hantavirus deaths, hantavirus map">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="EpiTrace — Independent Outbreak Tracker">
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://hantavirus.up.railway.app/">
+  <meta property="og:title"       content="Hantavirus Outbreak Tracker — MV Hondius Cruise Ship 2026">
+  <meta property="og:description" content="Live case-by-case tracker: 3 deaths, 35 cases, 14 countries. Transmission chains, repatriation flights tracked, quarantine countdowns. Updated continuously.">
+  <meta property="og:image"       content="https://hantavirus.up.railway.app/static/img/og-preview.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <!-- Twitter card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Hantavirus Outbreak Tracker — MV Hondius 2026">
+  <meta name="twitter:description" content="Live case-by-case tracker: 3 deaths, 35 cases, 14 countries. Transmission chains, repatriation flights, quarantine countdowns by country.">
+  <meta name="twitter:image"       content="https://hantavirus.up.railway.app/static/img/og-preview.png">
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "MV Hondius Hantavirus Outbreak Tracker 2026",
+    "description": "Live case-by-case surveillance dashboard tracking the 2026 MV Hondius hantavirus outbreak. Individual case records with clinical notes, transmission chains, flight exposure risk, and live ship tracking. Data sourced from WHO, AP, and regional health authorities.",
+    "url": "https://hantavirus.up.railway.app/",
+    "keywords": ["hantavirus", "MV Hondius", "Andes virus", "outbreak tracker", "2026", "cruise ship", "epidemiology"],
+    "creator": {
+      "@type": "Person",
+      "name": "EpiTrace — Independent Outbreak Tracker"
+    },
+    "temporalCoverage": "2026-04-01/..",
+    "spatialCoverage": {
+      "@type": "Place",
+      "name": "Global — MV Hondius Atlantic Odyssey voyage HDS2526"
+    },
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "isAccessibleForFree": true,
+    "dateModified": "2026-05-11T08:34:18Z",
+    "datePublished": "2026-04-28",
+    "variableMeasured": ["confirmed cases", "symptomatic cases", "asymptomatic monitoring", "deaths", "transmission chains", "flight exposure risk"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <!-- THEME: swap this line to change visual theme -->
+  <link rel="stylesheet" href="/static/css/themes/retro80s.css" id="active-theme">
+</head>
+<body>
+
+<!-- ===== BOOKMARK BANNER ===== -->
+
+<!-- ===== DISCLAIMER BANNER ===== -->
+<div class="disclaimer-banner" id="disclaimer-banner">
+  <span class="disclaimer-banner-icon">⚠</span>
+  <div class="disclaimer-banner-text">
+    <strong>ALERT:</strong> UNOFFICIAL TRACKER — NOT AN OFFICIAL PUBLIC HEALTH RESOURCE. Data is manually compiled from public sources and may be incomplete or inaccurate.
+  </div>
+  <button class="disclaimer-banner-btn" onclick="DisclaimerSystem.openModal()">ℹ FULL DISCLAIMER</button>
+  <button class="disclaimer-banner-close" onclick="DisclaimerSystem.dismissBanner()" title="Dismiss">✕</button>
+</div>
+
+<div class="app-layout">
+
+  <!-- ===== HEADER ===== -->
+  <header class="app-header">
+    <div class="header-brand">
+      <div class="header-brand-icon">📡</div>
+      <div>
+        <div class="header-brand-title">OUTBREAK TRACKER</div>
+        <div class="header-brand-sub">MV Hondius · Hantavirus Outbreak Tracker</div>
+      </div>
+    </div>
+
+    <div class="header-divider"></div>
+
+    <div class="header-stats">
+      <div class="stat-chip stat-chip--confirmed">
+        <span>Confirmed</span><span class="stat-chip-count" id="stat-confirmed">—</span>
+      </div>
+      <div class="stat-chip stat-chip--symptomatic">
+        <span>Symptomatic</span><span class="stat-chip-count" id="stat-symptomatic">—</span>
+      </div>
+      <div class="stat-chip stat-chip--asymptomatic">
+        <span>Asymptomatic</span><span class="stat-chip-count" id="stat-asymptomatic">—</span>
+      </div>
+      <div class="stat-chip stat-chip--recovered">
+        <span>Recovered</span><span class="stat-chip-count" id="stat-recovered">—</span>
+      </div>
+      <div class="stat-chip stat-chip--deceased">
+        <span>Deaths</span><span class="stat-chip-count" id="stat-deceased">—</span>
+      </div>
+      <div class="stat-chip stat-chip--total">
+        <span>Tracked</span><span class="stat-chip-count" id="stat-total">—</span>
+      </div>
+      <div class="stat-chip stat-chip--total" style="color:var(--color-gen-0)">
+        <span>Gen 0</span><span class="stat-chip-count" id="stat-gen-0">—</span>
+      </div>
+      <div class="stat-chip stat-chip--total" style="color:var(--color-gen-1)">
+        <span>Gen 1</span><span class="stat-chip-count" id="stat-gen-1">—</span>
+      </div>
+      <div class="stat-chip stat-chip--total" style="color:var(--color-gen-2)">
+        <span>Gen 2+</span><span class="stat-chip-count" id="stat-gen-2plus">—</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <div class="header-updated">
+        <span class="header-updated-dot"></span>
+        <span id="header-last-updated">—</span>
+      </div>
+      <button class="reader-toggle-btn" id="btn-reader-toggle" title="Switch to mobile-friendly card view">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Mobile View
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== TAB NAV ===== -->
+  <nav class="tab-nav" role="tablist">
+    <button class="tab-btn active" data-tab="overview" role="tab">
+      World Map
+    </button>
+    <button class="tab-btn" data-tab="transmission" role="tab">
+      Transmission
+    </button>
+    <button class="tab-btn" data-tab="flights" role="tab">
+      Travel Exposure
+    </button>
+    <button class="tab-btn" data-tab="tracking" role="tab">
+      <span class="tab-icon">✈️</span> Tracking
+    </button>
+    <button class="tab-btn" data-tab="quarantine" role="tab">
+      Quarantine Countdown
+    </button>
+    <button class="tab-btn" data-tab="info" role="tab">
+      <span class="tab-icon">ℹ</span> Info
+    </button>
+  </nav>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Status</div>
+      <div class="filter-pills">
+        <label class="filter-pill filter-pill--confirmed"><input type="checkbox" value="confirmed" checked> Confirmed</label>
+        <label class="filter-pill filter-pill--symptomatic"><input type="checkbox" value="symptomatic" checked> Monitoring — Symptomatic</label>
+        <label class="filter-pill filter-pill--asymptomatic"><input type="checkbox" value="asymptomatic" checked> Monitoring — Asymptomatic</label>
+        <label class="filter-pill filter-pill--recovered"><input type="checkbox" value="recovered" checked> Recovered</label>
+        <label class="filter-pill filter-pill--all"><input type="checkbox" value="deceased" checked> Deceased</label>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Generation</div>
+      <div class="filter-pills" id="gen-filter-pills">
+        <label class="filter-pill filter-pill--gen-0"><input type="checkbox" value="0" checked> G0</label>
+        <label class="filter-pill filter-pill--gen-1"><input type="checkbox" value="1" checked> G1</label>
+        <label class="filter-pill filter-pill--gen-2"><input type="checkbox" value="2" checked> G2</label>
+        <label class="filter-pill filter-pill--gen-3"><input type="checkbox" value="3" checked> G3+</label>
+      </div>
+    </div>
+
+    <div class="sidebar-section" style="padding-bottom:var(--space-2)">
+      <div class="sidebar-label">Cases <span id="sidebar-count" style="font-weight:400;text-transform:none;letter-spacing:0"></span></div>
+    </div>
+    <div class="case-list" id="case-list"></div>
+
+    <div class="sidebar-latte">
+      <a href="/support" class="latte-btn">☕ Buy the builder a latte</a>
+    </div>
+
+  </aside>
+
+  <!-- ===== TAB CONTENT ===== -->
+  <div class="tab-content">
+
+    <!-- Tab 1: Overview Map -->
+    <div class="tab-pane active" id="tab-overview">
+      <div class="overview-layout">
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Geographic Distribution</span>
+            <div class="map-legend">
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-confirmed)"></span>Confirmed</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#f97316"></span>Monitoring — Symptomatic</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span>Monitoring — Asymptomatic</div>
+              <div class="legend-item"><span class="legend-dot" style="background:var(--color-recovered)"></span>Recovered</div>
+            </div>
+            <div class="panel-actions">
+              <button class="btn btn--ghost btn--sm" id="btn-map-fit" title="Fit all markers">⊡ Fit</button>
+              <button class="btn btn--share btn--sm" id="btn-share" title="Share this tracker">Share with Friends</button>
+              <div class="social-share-wrap">
+                <button class="btn btn--social" id="btn-social-share">Share on Social</button>
+                <div class="social-dropdown" id="social-dropdown">
+                  <a class="social-option" id="share-twitter">𝕏 Twitter / X</a>
+                  <a class="social-option" id="share-reddit">🔴 Reddit</a>
+                  <a class="social-option" id="share-facebook">📘 Facebook</a>
+                  <a class="social-option" id="share-copy">🔗 Copy link</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="map-slider-bar">
+            <button class="btn btn--ghost btn--sm" id="slider-play-btn" title="Animate outbreak spread day by day">▶ Play</button>
+            <input type="range" id="map-date-slider" class="map-date-slider" min="0" max="100" value="100">
+            <span class="slider-date-label" id="slider-date-label">All dates</span>
+            <button class="btn btn--ghost btn--sm" id="slider-reset-btn" title="Show all dates">⊙ Reset</button>
+          </div>
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Transmission (merged Chains + Timeline) -->
+    <div class="tab-pane" id="tab-transmission">
+      <div class="travel-layout">
+
+        <!-- Left: sub-nav -->
+        <div class="travel-left-panel">
+          <div class="travel-nav-item selected" data-trans="chains" onclick="TransNav.select('chains')" style="padding:14px 16px;font-weight:600">Transmission Chains</div>
+          <div class="travel-nav-item" data-trans="timeline" onclick="TransNav.select('timeline')" style="padding:14px 16px;font-weight:600">Transmission Timeline</div>
+        </div>
+
+        <!-- Right: content panes -->
+        <div class="travel-right-panel">
+
+          <!-- Chains pane -->
+          <div id="trans-content-chains" class="travel-content-pane" style="display:flex;flex-direction:column;height:100%;width:100%">
+            <div class="chain-layout" style="display:flex;flex-direction:column;height:100%;width:100%">
+              <div class="chain-toolbar">
+                <span class="chain-toolbar-label">Layout</span>
+                <div class="btn-group">
+                  <button class="btn btn--ghost btn--sm active" id="layout-force" title="Force-directed">Force</button>
+                  <button class="btn btn--ghost btn--sm" id="layout-timeline" title="Timeline (left=early, right=late)">Timeline</button>
+                </div>
+
+                <span class="chain-toolbar-label" style="margin-left:var(--space-2)">Show</span>
+                <label class="filter-pill filter-pill--all" style="font-size:var(--text-xs)">
+                  <input type="checkbox" id="show-exposure-nodes" checked> Exposure events
+                </label>
+                <label class="filter-pill filter-pill--all" style="font-size:var(--text-xs)">
+                  <input type="checkbox" id="show-flight-nodes" checked> Flights
+                </label>
+
+                <div style="margin-left:auto;display:flex;gap:var(--space-3);align-items:center">
+                  <!-- Generation legend -->
+                  <div class="gen-legend">
+                    <div class="gen-legend-item"><span class="gen-dot" style="background:var(--color-gen-0)"></span>Gen 0</div>
+                    <div class="gen-legend-item"><span class="gen-dot" style="background:var(--color-gen-1)"></span>Gen 1</div>
+                    <div class="gen-legend-item"><span class="gen-dot" style="background:var(--color-gen-2)"></span>Gen 2</div>
+                    <div class="gen-legend-item"><span class="gen-dot" style="background:var(--color-gen-3)"></span>Gen 3+</div>
+                    <div class="gen-legend-item"><span class="gen-dot" style="background:var(--color-node-exposure);border-radius:2px;width:10px;height:10px"></span>Exposure</div>
+                    <div class="gen-legend-item"><span class="gen-dot" style="background:var(--color-node-flight);clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);width:10px;height:10px;border-radius:0"></span>Flight</div>
+                  </div>
+                  <button class="btn btn--ghost btn--sm" id="chain-fit-btn">⊡ Fit</button>
+                </div>
+              </div>
+              <div id="chain-cy"></div>
+            </div>
+          </div>
+
+          <!-- Timeline pane -->
+          <div id="trans-content-timeline" class="travel-content-pane" style="display:none;flex-direction:column;height:100%;width:100%">
+            <div class="timeline-layout" style="display:flex;flex-direction:column;height:100%;width:100%">
+              <div class="timeline-toolbar">
+                <span class="chain-toolbar-label">Sort by</span>
+                <div class="btn-group">
+                  <button class="btn btn--ghost btn--sm active" id="tl-sort-onset">Onset date</button>
+                  <button class="btn btn--ghost btn--sm" id="tl-sort-gen">Generation</button>
+                </div>
+                <div style="margin-left:auto;display:flex;gap:var(--space-4);align-items:center;font-size:var(--text-xs)">
+                  <div style="display:flex;align-items:center;gap:6px;color:var(--color-text-muted)">
+                    <div style="width:20px;height:10px;background:rgba(255,255,255,0.06);border:1px dashed rgba(255,255,255,0.2);border-radius:2px"></div>
+                    Incubation window (14 days)
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;color:var(--color-text-muted)">
+                    <div style="width:20px;height:10px;background:rgba(79,142,247,0.4);border-radius:2px"></div>
+                    Infectious period
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;color:var(--color-text-muted)">
+                    <span style="font-size:14px">✈</span> Flight event
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;color:var(--color-text-muted)">
+                    <span style="font-size:12px">●</span> Onset
+                  </div>
+                </div>
+              </div>
+              <div class="gantt-wrapper">
+                <svg id="gantt-svg"></svg>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Travel Exposure (merged) -->
+    <div class="tab-pane" id="tab-flights">
+      <div class="travel-layout">
+
+        <!-- Left: selector list -->
+        <div class="travel-left-panel">
+          <div class="travel-nav-item selected" data-section="tracking" onclick="TravelNav.select('tracking')">MV Hondius — Docking Notes</div>
+          <div class="travel-nav-item" data-section="deck" onclick="TravelNav.select('deck')">MV Hondius — Deck Schematic</div>
+          <div class="travel-nav-item" data-section="exposure" onclick="TravelNav.select('exposure')">MV Hondius — Exposure Events</div>
+          <div class="travel-flights-divider">Shore Stops</div>
+          <div class="travel-nav-item" data-section="shore-sgeorgia" onclick="TravelNav.select('shore-sgeorgia')">
+            <div style="font-weight:700">South Georgia Island</div>
+            <div style="font-size:10px;color:var(--color-text-muted);margin-top:2px">Apr 4–7 · Shore excursions</div>
+          </div>
+          <div class="travel-nav-item" data-section="shore-tristan" onclick="TravelNav.select('shore-tristan')">
+            <div style="font-weight:700">Tristan da Cunha</div>
+            <div style="font-size:10px;color:var(--color-text-muted);margin-top:2px">Apr 13–16 · Inaccessible &amp; Nightingale Is.</div>
+          </div>
+          <div class="travel-nav-item" data-section="shore-gough" onclick="TravelNav.select('shore-gough')">
+            <div style="font-weight:700">Gough Island</div>
+            <div style="font-size:10px;color:var(--color-text-muted);margin-top:2px">Apr 17 · Shore stop</div>
+          </div>
+          <div class="travel-nav-item" data-section="shore-sthelena" onclick="TravelNav.select('shore-sthelena')">
+            <div style="font-weight:700">St. Helena</div>
+            <div style="font-size:10px;color:#f97316;margin-top:2px">Apr 21–24 · 32 guests disembarked</div>
+          </div>
+          <div class="travel-nav-item" data-section="shore-ascension" onclick="TravelNav.select('shore-ascension')">
+            <div style="font-weight:700">Ascension Island</div>
+            <div style="font-size:10px;color:var(--color-text-muted);margin-top:2px">Apr 27 · Medevac point</div>
+          </div>
+          <div class="travel-flights-divider">Exposure Flights</div>
+          <div id="flight-list" style="overflow-y:auto;flex:1"><!-- populated by JS --></div>
+        </div>
+
+        <!-- Right: content area -->
+        <div class="travel-right-panel">
+
+          <!-- Live Tracking pane -->
+          <div id="travel-content-tracking" class="travel-content-pane">
+            <div class="panel-header"><span class="panel-title">MV Hondius — Docking Notes</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">⚓ DOCKED — Port of Granadilla, Tenerife · May 10, 2026 · WHO Director-General Tedros + Spain ministers on-site</div>
+              <div class="travel-status-row green">76 passengers disembarked by late afternoon local · 7 countries · US + Australia remaining · Source: Spanish Health Ministry</div>
+              <div class="travel-status-row muted">147 aboard · 23 nationalities · All screened asymptomatic before disembarkation</div>
+              <div class="travel-status-row muted">At port: hazmat suits · respirators · face masks · No luggage — small bag, phone, charger, documents only · No contact with local population</div>
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-faint);margin:12px 0 6px">Repatriation Flights</div>
+              <div class="travel-status-row green">🇪🇸 A310 "Reino de España" T.22-2 → Gómez Ulla Defense Hospital, Madrid · Departed ~13:00 · 14 Spanish nationals · Quarantine on arrival</div>
+              <div class="travel-status-row green">🇫🇷 LANDED · Falcon 900EX F-HREG (ARL120E) · TFS → Paris Le Bourget (LBG) · Landed 4:27 PM · WARNING: 1 of 5 pax symptomatic in-flight</div>
+              <div class="travel-status-row green">🇨🇦 DEPARTED — 4 passengers en route to Saguenay-Bagotville Airport, QC (~2 hrs outside Quebec City) · Protective gear worn boarding · WHO screened at port</div>
+              <div class="travel-status-row green">🇳🇴 Norwegian air ambulance on standby at TFS · deployed in case passengers deteriorate during disembarkation · EU-owned, Norway-operated</div>
+              <div class="travel-status-row green">🇳🇱 DEPARTED · 29 aboard · dark-livery narrow-body charter · Menzies Aviation ground handling · TFS</div>
+              <div class="travel-status-row amber">🇺🇸 Charter pending · 17 guests · Nebraska OPTIONAL per NIH Director Bhattacharya (CNN) · Low-risk passengers may return home · CDC interviewing each passenger</div>
+              <div class="travel-status-row green">🇬🇧 DEPARTED · 20 passengers · TFS → UK · Hospitalization on arrival · Source: BPI News</div>
+              <div class="travel-status-row amber">🇦🇺 Plane arrives Monday — last flight out · also evacuating 🇳🇿 + nearby nationalities</div>
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-faint);margin:12px 0 6px">After Disembarkation</div>
+              <div class="travel-status-row muted">MV Hondius sails to Rotterdam, Netherlands for full disinfection · ~5 days · Crew + body of deceased passenger remain aboard</div>
+              <div class="travel-acc-note" style="margin-top:12px">🪂 Tristan da Cunha: British paratroopers (16 Air Assault Brigade) airdropped for suspected case — pop. 221, no airstrip · RAF A400M from Brize Norton · Source: Reuters / UK MoD</div>
+            </div>
+          </div>
+
+          <!-- Deck Schematic pane -->
+          <div id="travel-content-deck" class="travel-content-pane" style="display:none">
+            <div class="panel-header">
+              <span class="panel-title">MV Hondius — Deck Schematic</span>
+              <div class="panel-actions"><span class="panel-badge" id="exposure-count-badge">— events</span></div>
+            </div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="deck-view" id="deck-view"><!-- populated by JS --></div>
+            </div>
+          </div>
+
+          <!-- Exposure Events pane -->
+          <div id="travel-content-exposure" class="travel-content-pane" style="display:none">
+            <div class="panel-header">
+              <span class="panel-title">MV Hondius — Exposure Events</span>
+              <div class="panel-actions"><button class="btn btn--ghost btn--xs" id="exposure-sort-risk">Sort by risk ↓</button></div>
+            </div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="exposure-table" id="exposure-table"><!-- populated by JS --></div>
+            </div>
+          </div>
+
+          <!-- Shore stop panes -->
+          <div id="travel-content-shore-sgeorgia" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">South Georgia Island — Apr 4–7, 2026</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row muted">South Atlantic · British Overseas Territory · Pop. ~30 (research staff only)</div>
+              <div class="travel-status-row muted">Passengers and crew went ashore for wildlife excursions — penguin colonies, elephant seals, historic Grytviken whaling station</div>
+              <div class="travel-status-row muted">No permanent civilian population — contact limited to fellow passengers and expedition guides</div>
+              <div class="travel-acc-note" style="margin-top:16px">One of the first stops after departing Ushuaia. Passengers mingled on shore in small groups. No cases have been linked specifically to this stop, but it preceded the earliest known symptom onset dates.</div>
+            </div>
+          </div>
+
+          <div id="travel-content-shore-tristan" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">Tristan da Cunha — Apr 13–16, 2026</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row muted">South Atlantic · British Overseas Territory · Pop. ~251 · Most remote inhabited island on Earth</div>
+              <div class="travel-status-row muted">Also visited: Inaccessible Island and Nightingale Island (uninhabited nature reserves)</div>
+              <div class="travel-status-row amber">6 island residents embarked the ship here · 1 crew member disembarked · Direct contact with local population</div>
+              <div class="travel-status-row muted">Island has no airstrip — the only access is by ship. Residents who boarded would have had close contact with the full passenger manifest over several days.</div>
+              <div class="travel-acc-note" style="margin-top:16px">A British man on Tristan da Cunha later developed symptoms — British paratroopers (16 Air Assault Brigade) were airdropped from a RAF A400M (Brize Norton → Ascension → Tristan) to assist. See case PTRDC01.</div>
+            </div>
+          </div>
+
+          <div id="travel-content-shore-gough" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">Gough Island — Apr 17, 2026</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row muted">South Atlantic · British Overseas Territory · Uninhabited except for a small South African weather station (~6 staff)</div>
+              <div class="travel-status-row muted">Passengers went ashore for wildlife viewing — seabirds, endemic species. Gough Island is a UNESCO World Heritage site.</div>
+              <div class="travel-status-row muted">Minimal local contact — weather station staff may have had brief interaction with passengers at the shoreline</div>
+              <div class="travel-acc-note" style="margin-top:16px">No cases have been linked to this stop. Low-risk given very small isolated population present.</div>
+            </div>
+          </div>
+
+          <div id="travel-content-shore-sthelena" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">St. Helena — Apr 21–24, 2026</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row muted">South Atlantic · British Overseas Territory · Pop. ~4,500 · Has an airport (opened 2016)</div>
+              <div class="travel-status-row amber">32 guests disembarked here — including Dutch index couple (P002 / PEDB43) · 1 crew member embarked</div>
+              <div class="travel-status-row amber">Passengers who disembarked spent time ashore in Jamestown and surrounding areas — shops, restaurants, tourist sites — before flying or sailing onward</div>
+              <div class="travel-status-row amber">Dutch index couple left the ship here and traveled onward — they had been symptomatic or pre-symptomatic during their time aboard</div>
+              <div class="travel-acc-note" style="margin-top:16px">Most epidemiologically significant shore stop. 32 passengers dispersed from here — some flying to the UK and Europe, potentially carrying the virus before the outbreak was identified. Local St. Helena health authorities were subsequently alerted.</div>
+            </div>
+          </div>
+
+          <div id="travel-content-shore-ascension" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">Ascension Island — Apr 27, 2026</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row muted">South Atlantic · British Overseas Territory · Pop. ~800 (military and contractor staff) · RAF Ascension Island base</div>
+              <div class="travel-status-row amber">2 guests medevaced off the ship here — symptomatic British national (P003) and American partner (PUSPAR01)</div>
+              <div class="travel-status-row muted">Not a standard shore stop — used as a medical evacuation point as the ship's situation became more urgent</div>
+              <div class="travel-status-row muted">RAF base on the island provided logistics for the medevac · Island population is largely military and contractors</div>
+              <div class="travel-acc-note" style="margin-top:16px">First formal medevac of the voyage — 2 passengers transferred here on Apr 27 as symptoms escalated. After this point the ship had 147 remaining aboard.</div>
+            </div>
+          </div>
+
+          <!-- Flight pane (seat map + manifest) -->
+          <div id="travel-content-flight" class="travel-content-pane" style="display:none">
+            <div class="panel-header">
+              <span class="panel-title" id="flight-panel-title">Select a flight</span>
+              <div class="panel-actions">
+                <button class="btn btn--ghost btn--xs" id="btn-export-manifest" style="display:none">↓ Export manifest CSV</button>
+              </div>
+            </div>
+            <div class="flights-main-inner">
+              <div class="seat-map-container" id="seat-map-container">
+                <div id="seat-map-placeholder" style="color:var(--color-text-faint);font-size:var(--text-sm);padding:var(--space-4)">Loading seat map…</div>
+                <div id="seat-map" style="display:none">
+                  <div class="seat-map-title">
+                    <span id="seat-map-flight-label">—</span>
+                    <div class="seat-map-legend" id="seat-map-legend"></div>
+                  </div>
+                  <div class="seat-map-grid" id="seat-grid"></div>
+                </div>
+              </div>
+              <div class="manifest-table-wrap">
+                <table class="manifest-table" id="manifest-table">
+                  <thead><tr><th>Seat</th><th>Passenger / ID</th><th>Type</th><th>Status</th><th>Risk Score</th><th>Risk Level</th></tr></thead>
+                  <tbody id="manifest-tbody">
+                    <tr><td colspan="6" style="text-align:center;color:var(--color-text-faint);padding:var(--space-6)">Select a flight to view the passenger manifest.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 6: Live Tracking (repatriation flights) -->
+    <div class="tab-pane" id="tab-tracking">
+      <div class="travel-layout">
+
+        <!-- Left: flight selector -->
+        <div class="travel-left-panel">
+          <div class="travel-flights-divider">Arrived</div>
+
+          <div class="travel-nav-item selected" data-repat="es" onclick="RepatNav.select('es')">
+            <div style="font-weight:700">🇪🇸 Arrived in Spain</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">TFS → Torrejón Air Base · A310 "Reino de España"</div>
+          </div>
+          <div class="travel-nav-item" data-repat="fr" onclick="RepatNav.select('fr')">
+            <div style="font-weight:700">🇫🇷 Arrived in France ⚠</div>
+            <div style="font-size:10px;color:#f97316;margin-top:2px">TFS → Paris Le Bourget · Falcon 900EX · 1 pax symptomatic</div>
+          </div>
+          <div class="travel-nav-item" data-repat="gb" onclick="RepatNav.select('gb')">
+            <div style="font-weight:700">🇬🇧 Arrived in United Kingdom</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">ZT791 · Manchester Airport · 22 passengers</div>
+          </div>
+          <div class="travel-nav-item" data-repat="nl" onclick="RepatNav.select('nl')">
+            <div style="font-weight:700">🇳🇱 Arrived in Netherlands</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">Eindhoven Airport · 26 passengers</div>
+          </div>
+
+          <div class="travel-flights-divider">Departed</div>
+
+          <div class="travel-nav-item" data-repat="ca" onclick="RepatNav.select('ca')">
+            <div style="font-weight:700">🇨🇦 Canada — DEPARTED</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">TFS → Bagotville → B.C. · 4 passengers · 2-leg flight</div>
+          </div>
+          <div class="travel-nav-item" data-repat="tr" onclick="RepatNav.select('tr')">
+            <div style="font-weight:700">🇹🇷 Turkey — DEPARTED</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">TFS → Turkey · 3 passengers</div>
+          </div>
+          <div class="travel-nav-item" data-repat="ie" onclick="RepatNav.select('ie')">
+            <div style="font-weight:700">🇮🇪 Ireland — DEPARTED</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">IRL290 · Irish Air Corps · 2 passengers</div>
+          </div>
+          <div class="travel-nav-item" data-repat="us" onclick="RepatNav.select('us')">
+            <div style="font-weight:700">🇺🇸 United States — DEPARTED</div>
+            <div style="font-size:10px;color:#10b981;margin-top:2px">TFS → D.C. → Nebraska · 18 passengers · En route</div>
+          </div>
+
+          <div class="travel-flights-divider">Standby / Pending</div>
+
+          <div class="travel-nav-item" data-repat="au" onclick="RepatNav.select('au')">
+            <div style="font-weight:700">🇦🇺 Australia — MONDAY</div>
+            <div style="font-size:10px;color:#fbbf24;margin-top:2px">Last flight · also 🇳🇿 + nearby nationalities</div>
+          </div>
+        </div>
+
+        <!-- Right: flight detail + map placeholder -->
+        <div class="travel-right-panel">
+
+          <div id="repat-content-es" class="travel-content-pane">
+            <div class="panel-header"><span class="panel-title">🇪🇸 Spain — Arrived Torrejón Air Base</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✅ LANDED — Torrejón Air Base, Madrid · May 10, 2026</div>
+              <div class="travel-status-row green">Aircraft: Spanish Air Force Airbus A310 "Reino de España" · Serial 45-102 · Tail T.22-2 · Ala 45, Torrejón · Operated by Spanish Air Force and Space Corps</div>
+              <div class="travel-status-row green">14 Spanish nationals · Transferred to Gómez Ulla Central Defense Hospital for strict quarantine</div>
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-faint);margin:14px 0 6px">Evacuation Route</div>
+              <div class="travel-status-row muted">MV Hondius anchored off Granadilla port (secondary port, Tenerife) → passengers transferred to shore by boat → bus to Tenerife South Airport (TFS) → Spanish Air Force A310 → Torrejón AB → Gómez Ulla Hospital</div>
+              <div class="travel-status-row muted">Spaniards were the first group to leave the ship · WHO epidemiologist from Africa (who joined the expedition in Cape Verde) traveled with the group</div>
+              <div class="travel-status-row muted">Military flight — not trackable on public ADS-B networks</div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· <a href="https://htnoticias.com/llegan-a-madrid-los-14-espanoles-del-crucero-con-hantavirus" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">HT Noticias — "Los 14 españoles del crucero aterrizan en Torrejón" (May 10, 2026)</a></div>
+                <div style="margin-top:3px">· <a href="https://www.2news.com/news/national/plane-carrying-spanish-passengers-from-hantavirus-stricken-mv-hondius-cruise-ship-leaves-for-madrid/article_648fe8ee-e26e-545f-ac46-632d081b948d.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">AP — "Plane carrying Spanish passengers from hantavirus ship leaves for Madrid"</a></div>
+                <div style="margin-top:3px">· Aircraft ID (serial 45-102, tail T.22-2) confirmed via user video observation of departure · Ministry of Defense official channels</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-fr" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇫🇷 France — TFS → Paris area</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✅ LANDED — Paris Le Bourget (LBG) · 4:27 PM local · Flight time 3h18m</div>
+              <div class="travel-status-row green">Departed TFS 12:09 PM · Arrived LBG 4:27 PM · May 10, 2026</div>
+              <div class="travel-status-row green">Aircraft: Dassault Falcon 900EX · Reg: F-HREG · Callsign: ARL120E · Mode S: 39C486</div>
+              <div class="travel-status-row green">Operator: Airlec Air Espace (ARL) — French medical air transport, Bordeaux · Le Bourget chosen to avoid commercial terminals</div>
+              <div class="travel-status-row green">5 passengers + medical staff aboard · Special medical charter by French Foreign Office crisis centre</div>
+              <div class="travel-status-row amber">WARNING: 1 of 5 French passengers showed symptoms during the repatriation flight · Could be confirmed as 9th case globally</div>
+              <div class="travel-status-row amber">All 5 French passengers "immediately placed in strict isolation until further notice" — PM Lecornu on X · "Receiving medical care and will undergo testing and a full health assessment"</div>
+              <div class="travel-status-row muted">French PM Sébastien Lecornu called emergency ministerial meeting · Nicolas Pillerel (French embassy) oversaw TFS logistics</div>
+              <div class="travel-acc-note" style="margin-top:16px">Medical staff and fellow passengers on board may have been exposed in-flight. All 5 now in strict isolation on arrival at Paris Le Bourget — testing underway.</div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· French PM on X (via CGTN) — symptomatic passenger during repatriation flight</div>
+                <div style="margin-top:3px">· <a href="https://www.theguardian.com/world/live/2026/may/09/peter-magyar-hungary-russia-ukraine-ceasefire-moscow-victory-day-parade-europe-latest-news-updates?filterKeyEvents=false&page=with%3Ablock-69feea5f8f08f695b7fc07fa" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">The Guardian — Live coverage, France medical repatriation (May 9–10, 2026)</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-ca" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇨🇦 Canada — TFS → Bagotville → B.C.</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✈️ IN TRANSIT — 2-leg repatriation · Leg 1: TFS → Bagotville, QC (3 Wing CFB) · Leg 2: transfer plane → unspecified B.C. airport</div>
+              <div class="travel-status-row green">All 4 asymptomatic · PHAC officer aboard · Masking + physical distancing in effect on flight</div>
+              <div class="travel-status-row green">Screened by Spanish health officials at port · Transported by bus directly to airport</div>
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-faint);margin:14px 0 6px">On Arrival in B.C.</div>
+              <div class="travel-status-row muted">Assessed by local public health before leaving airport · Transfer to pre-determined self-isolation lodging</div>
+              <div class="travel-status-row muted">Minimum 21-day isolation · May extend to 42 days (full hantavirus incubation period) · Monitored daily by BC public health — Dr. Bonnie Henry</div>
+              <div class="travel-status-row muted">"At no point during their arrival or isolation period will they be in contact with the public" — Dr. Bonnie Henry, BC Provincial Health Officer</div>
+              <div class="travel-status-row amber">Note: Toronto Sun paired their Canada story with an AFP wire photo labelled "bound for the Netherlands" by the photographer — Canada aircraft type remains unconfirmed</div>
+              <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--color-text-faint);margin:14px 0 6px">Canadians Not on the Ship</div>
+              <div class="travel-status-row amber">Grey Bruce region of Ontario — a couple disembarked in late April before outbreak was declared · No symptoms reported · Told to isolate</div>
+              <div class="travel-status-row amber">4 Canadians (from Quebec, Alberta and Ontario) were not on the ship but may have been exposed to an infected passenger while flying · Federal government monitoring</div>
+              <div class="travel-acc-note" style="margin-top:16px">Bagotville (IATA: YBG) is home to <strong>3 Wing Bagotville</strong>, a Canadian Forces base — used as a transfer point only. Final isolation destination is British Columbia. PHAC has been on the ground in Tenerife since Thursday supporting the four Canadians.</div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· <a href="https://www.cbc.ca/news/canada/british-columbia/hantavirus-cruise-ship-canadians-b-c-9.7194477" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">CBC — "Canadians to be flown to B.C., isolate 3 weeks" (May 10, 2026)</a></div>
+                <div style="margin-top:3px">· <a href="https://globalnews.ca/news/11842427/hantavirus-cruise-ship-docks-spain-canadians/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Global News — "Canadians from hantavirus cruise ship on plane heading for Canada" (May 10, 2026)</a></div>
+                <div style="margin-top:3px">· <a href="https://calgary.citynews.ca/2026/05/10/canadians-on-virus-stricken-ship-set-to-disembark/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Calgary CityNews / Canadian Press — "Passengers en route to Canada" (May 10, 2026)</a></div>
+                <div style="margin-top:3px">· Public Health Agency of Canada (PHAC) — Sunday bulletin, May 10, 2026</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="repat-content-nl" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇳🇱 Netherlands — Arrived Eindhoven</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✅ LANDED — Eindhoven Airport (EIN) · May 10, 2026</div>
+              <div class="travel-status-row green">26 passengers · Charter flight · TFS → Eindhoven</div>
+              <div class="travel-status-row green">Aircraft: dark-livery narrow-body jet · "Jan..." name on nose · Airbus A220 type · Ground handling by Menzies Aviation at TFS · Photo: AFP/Getty</div>
+              <div class="travel-status-row muted">26 confirmed by Spanish Health Ministry · Dutch nationals + other nationalities · Dutch Foreign Ministry confirmed</div>
+              <div class="travel-status-row muted">Includes 2 Indian crew members — confirmed quarantining in the Netherlands · Indian Embassy in Madrid via CENEM (Spanish National Centre for Emergency Monitoring)</div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· <a href="https://indianexpress.com/article/india/2-indians-aboard-cruise-ship-with-hantavirus-cases-evacuated-to-netherlands-10682976/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Indian Express — "2 Indians evacuated to Netherlands, to be quarantined" (May 11, 2026)</a></div>
+                <div style="margin-top:3px">· <a href="https://www.2news.com/news/national/plane-carrying-spanish-passengers-from-hantavirus-stricken-mv-hondius-cruise-ship-leaves-for-madrid/article_648fe8ee-e26e-545f-ac46-632d081b948d.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">AP — MV Hondius evacuation coverage (2News / Nevada)</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-us" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇺🇸 United States — TFS → Home or UNMC</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✈️ DEPARTED — TFS → Washington D.C. → Nebraska · En route · May 10, 2026</div>
+              <div class="travel-status-row green">18 passengers total · 17 Americans + 1 British national (US resident) · CDC escorting · 2-stop routing: TFS → DC → UNMC/Omaha</div>
+              <div class="travel-status-row green">Policy update: Nebraska OPTIONAL — Dr. Jay Bhattacharya (NIH Director, CNN) says passengers deemed low-risk may return home instead of going to UNMC</div>
+              <div class="travel-status-row muted">CDC will interview each passenger · Low risk (no contact with symptomatic person) = return home, report to state/local health authority · Higher risk = National Quarantine Center, UNMC, Omaha</div>
+              <div class="travel-status-row muted">7 Americans already home — returned pre-outbreak declaration to California, Texas, Virginia and Georgia · Being monitored by state health departments</div>
+              <div class="travel-acc-note" style="margin-top:16px">UNMC hosts the only federally designated National Quarantine Center in the US. Nebraska option remains available for any passenger who wants it, or is deemed higher risk.</div>
+              <div class="travel-acc-note" style="margin-top:10px">
+                Possible US flight being tracked (unconfirmed):
+                <a href="https://www.flightradar24.com/3f96e5c3" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Flightradar24 — watch flight ↗</a>
+              </div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· <a href="https://abcnews.com/International/live-updates/hantavirus-live-updates-mv-hondius-canary-islands/?id=132746955" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">ABC News — 18 passengers at TFS airport incl. 1 British/US resident (Spanish Health Minister)</a></div>
+                <div style="margin-top:3px">· <a href="https://www.usatoday.com/story/news/health/2026/05/10/hantavirus-live-updates-cruise-ship-quarantine--live/90020238007/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">USA Today — Live updates: MV Hondius disembarkation (May 10, 2026)</a></div>
+                <div style="margin-top:3px">· Dr. Jay Bhattacharya, NIH Director — CNN "State of the Union," May 10, 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-gb" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇬🇧 United Kingdom — Arrived Manchester</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✅ LANDED — Manchester Airport (MAN) · May 10, 2026</div>
+              <div class="travel-status-row green">Flight: ZT791 / AWC7791 · Aircraft: Airbus A320 · Operator: Titan Airways · 22 passengers</div>
+              <div class="travel-status-row muted">Hospitalization on arrival per UK authorities</div>
+              <div class="travel-acc-note" style="margin-top:16px">
+                Track live:
+                <a href="https://www.flightradar24.com/ZT791" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Flightradar24 — ZT791 ↗</a>
+                &nbsp;·&nbsp;
+                <a href="https://globe.adsbexchange.com/?icao=AWC7791" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">ADS-B Exchange — AWC7791 ↗</a>
+              </div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· Flight identified via ADS-B · ZT/AWC = Titan Airways IATA/ICAO</div>
+                <div style="margin-top:3px">· BPI News via Twitter — UK repatriation flight departed TFS, 22 passengers</div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-tr" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇹🇷 Turkey — TFS → Turkey</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✈️ DEPARTED · 3 passengers · Confirmed by Spanish Health Ministry</div>
+              <div class="travel-status-row muted">Part of the 76 total passengers who left the ship by late afternoon · Source: Spanish Health Ministry via X</div>
+              <div class="travel-acc-note" style="margin-top:16px">Flight map available once flight number confirmed — check back for updates</div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· <a href="https://www.usatoday.com/story/news/health/2026/05/10/hantavirus-live-updates-cruise-ship-quarantine--live/90020238007/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">USA Today — Live updates: MV Hondius disembarkation (May 10, 2026)</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-ie" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇮🇪 Ireland — TFS → Ireland · IRL290</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row green">✈️ DEPARTED · 2 passengers · Confirmed by Spanish Health Ministry</div>
+              <div class="travel-status-row green">Callsign: IRL290 · Operator: Irish Air Corps (military government flight)</div>
+              <div class="travel-acc-note" style="margin-top:16px">
+                Track live:
+                <a href="https://www.flightradar24.com/IRL290/3fa13094" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Flightradar24 — IRL290 ↗</a>
+              </div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· Flight callsign identified via Flightradar24 · IRL = Irish Air Corps ICAO prefix</div>
+                <div style="margin-top:3px">· <a href="https://www.usatoday.com/story/news/health/2026/05/10/hantavirus-live-updates-cruise-ship-quarantine--live/90020238007/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">USA Today — Live updates: MV Hondius disembarkation (May 10, 2026)</a></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="repat-content-au" class="travel-content-pane" style="display:none">
+            <div class="panel-header"><span class="panel-title">🇦🇺 Australia — TFS → Australia (Monday)</span></div>
+            <div style="padding:var(--space-4);overflow-y:auto;flex:1">
+              <div class="travel-status-row amber">⏳ Plane arriving Monday — last flight out of TFS</div>
+              <div class="travel-status-row amber">Also evacuating 🇳🇿 New Zealand + nearby nationalities · Per Spain Health Minister García</div>
+              <div class="travel-acc-note" style="margin-top:16px">🗺 Flight map available once flight number is confirmed — check back for updates</div>
+              <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.07);font-size:10px;color:var(--color-text-faint)">
+                <div style="font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:5px">Sources</div>
+                <div>· <a href="https://www.2news.com/news/national/plane-carrying-spanish-passengers-from-hantavirus-stricken-mv-hondius-cruise-ship-leaves-for-madrid/article_648fe8ee-e26e-545f-ac46-632d081b948d.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">AP — MV Hondius evacuation coverage (2News / Nevada)</a></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Quarantine Countdown -->
+    <div class="tab-pane" id="tab-quarantine">
+      <div class="quar-header-row">
+        <div>
+          <h2>Quarantine Countdown</h2>
+          <p>Isolation status for all repatriated groups — updated daily</p>
+        </div>
+      </div>
+      <p class="quar-subtitle">All groups arrived May 10–11, 2026 from Tenerife South Airport (TFS). Quarantine periods run from arrival date.</p>
+      <div class="quar-grid">
+
+        <!-- Spain -->
+        <div class="quar-card" data-arrival="2026-05-10" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇪🇸</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>Spain</h3>
+              <p>Gómez Ulla Central Defense Hospital, Madrid</p>
+            </div>
+            <span class="quar-status quar-status--clear">All clear</span>
+          </div>
+          <div class="quar-people">14 passengers · Hospital quarantine</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            Spanish Air Force A310 "Reino de España" (T.22-2) · TFS → Torrejón Air Base · 14 Spanish nationals · First group to leave the ship
+          </div>
+        </div>
+
+        <!-- France -->
+        <div class="quar-card quar-card--symptomatic" data-arrival="2026-05-10" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇫🇷</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>France</h3>
+              <p>Strict isolation, Paris Le Bourget area</p>
+            </div>
+            <span class="quar-status quar-status--symptomatic">⚠ Symptomatic</span>
+          </div>
+          <div class="quar-people">5 passengers · Strict isolation · 1 symptomatic in-flight</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill quar-progress-fill--red" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            Dassault Falcon 900EX F-HREG (ARL120E) · TFS → Paris Le Bourget (LBG) · 5 passengers · 1 symptomatic in-flight · Landed 4:27 PM local
+          </div>
+        </div>
+
+        <!-- United Kingdom -->
+        <div class="quar-card quar-card--monitoring" data-arrival="2026-05-10" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇬🇧</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>United Kingdom</h3>
+              <p>Hospitalized, Manchester</p>
+            </div>
+            <span class="quar-status quar-status--monitoring">Monitoring</span>
+          </div>
+          <div class="quar-people">22 passengers · Hospital isolation</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill quar-progress-fill--amber" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            ZT791 / AWC7791 · Airbus A320 · Titan Airways · TFS → Manchester (MAN) · 22 passengers
+          </div>
+        </div>
+
+        <!-- Netherlands -->
+        <div class="quar-card" data-arrival="2026-05-10" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇳🇱</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>Netherlands</h3>
+              <p>Eindhoven</p>
+            </div>
+            <span class="quar-status quar-status--clear">All clear</span>
+          </div>
+          <div class="quar-people">26 passengers · incl. 2 Indian crew members</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            Charter · TFS → Eindhoven (EIN) · 26 passengers incl. 2 Indian crew members
+          </div>
+        </div>
+
+        <!-- Canada -->
+        <div class="quar-card" data-arrival="2026-05-10" data-duration="42">
+          <div class="quar-header">
+            <div class="quar-flag">🇨🇦</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>Canada</h3>
+              <p>British Columbia (unspecified airport)</p>
+            </div>
+            <span class="quar-status quar-status--clear">All clear</span>
+          </div>
+          <div class="quar-people">4 passengers · 42-day extended quarantine · arriving May 10/11</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 42</span>
+              <span>42-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill" style="width:2%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            Charter · TFS → Bagotville, QC (3 Wing CFB, transfer) → B.C. · 4 passengers · PHAC officer aboard · 2-leg flight
+          </div>
+        </div>
+
+        <!-- United States -->
+        <div class="quar-card" data-arrival="2026-05-11" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇺🇸</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>United States</h3>
+              <p>UNMC Nebraska + home monitoring · via Washington D.C.</p>
+            </div>
+            <span class="quar-status quar-status--clear">All clear</span>
+          </div>
+          <div class="quar-people">18 passengers (17 Americans + 1 British/US resident) · en route via D.C.</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            Charter · TFS → Washington D.C. → Nebraska (UNMC/Omaha) · 18 passengers (17 Americans + 1 British/US resident) · CDC escorting · 2-stop routing
+          </div>
+        </div>
+
+        <!-- Turkey -->
+        <div class="quar-card" data-arrival="2026-05-10" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇹🇷</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>Turkey</h3>
+              <p>Location TBD</p>
+            </div>
+            <span class="quar-status quar-status--clear">All clear</span>
+          </div>
+          <div class="quar-people">3 passengers · Confirmed by Spanish Health Ministry</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            Charter · TFS → Turkey · 3 passengers · Confirmed by Spanish Health Ministry
+          </div>
+        </div>
+
+        <!-- Ireland -->
+        <div class="quar-card" data-arrival="2026-05-10" data-duration="21">
+          <div class="quar-header">
+            <div class="quar-flag">🇮🇪</div>
+            <div class="quar-icon">
+              <svg viewBox="0 0 44 56" width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="22" cy="28" rx="19" ry="25" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 3.5"/>
+                <circle cx="22" cy="16" r="5" fill="currentColor"/>
+                <path d="M13 42 Q13 29 22 29 Q31 29 31 42 Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="quar-title">
+              <h3>Ireland</h3>
+              <p>Location TBD</p>
+            </div>
+            <span class="quar-status quar-status--clear">All clear</span>
+          </div>
+          <div class="quar-people">2 passengers</div>
+          <div class="quar-progress-wrap">
+            <div class="quar-progress-label">
+              <span class="quar-day-label">Day 1 of 21</span>
+              <span>21-day isolation</span>
+            </div>
+            <div class="quar-progress-bar">
+              <div class="quar-progress-fill" style="width:5%"></div>
+            </div>
+          </div>
+          <button class="quar-flight-toggle">
+            <span class="toggle-arrow">▼</span> Flight details
+          </button>
+          <div class="quar-flight-details">
+            IRL290 · Irish Air Corps · TFS → Ireland · 2 passengers
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tab 7: Info -->
+    <div class="tab-pane" id="tab-info">
+      <div class="info-layout">
+
+        <div class="info-section">
+          <div class="info-section-title">📡 About This Tracker</div>
+          <p>EpiTrace is an unofficial real-time surveillance dashboard tracking the 2026 MV Hondius hantavirus outbreak, which has killed three cruise ship passengers and spread across multiple countries. It maps confirmed and suspected cases, transmission chains, and flight exposure risks using data compiled from WHO briefings, AP, and regional health authorities.</p>
+          <p style="margin-top:8px;color:var(--color-text-muted);font-size:var(--text-xs)">⚠️ This is NOT an official public health resource. Data is manually compiled from public sources and may be incomplete or inaccurate. Always verify critical information with official health authorities.</p>
+        </div>
+
+        <div class="info-section">
+          <div class="info-section-title">🏥 Official Sources</div>
+          <div class="info-links">
+            <a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599" target="_blank" rel="noopener" class="info-link info-link--primary">
+              <div class="info-link-icon">🌐</div>
+              <div>
+                <div class="info-link-name">WHO Disease Outbreak News — DON599</div>
+                <div class="info-link-desc">Official WHO situation report on the MV Hondius hantavirus outbreak</div>
+              </div>
+              <span class="info-link-arrow">↗</span>
+            </a>
+            <a href="https://www.who.int/news/item/07-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship" target="_blank" rel="noopener" class="info-link info-link--primary">
+              <div class="info-link-icon">🌐</div>
+              <div>
+                <div class="info-link-name">WHO Response Statement — May 7, 2026</div>
+                <div class="info-link-desc">Official WHO statement on actions taken including onboard expert deployment and diagnostic kit shipment</div>
+              </div>
+              <span class="info-link-arrow">↗</span>
+            </a>
+            <a href="https://www.cdc.gov/hantavirus" target="_blank" rel="noopener" class="info-link">
+              <div class="info-link-icon">🇺🇸</div>
+              <div>
+                <div class="info-link-name">CDC — Hantavirus</div>
+                <div class="info-link-desc">US Centers for Disease Control hantavirus information</div>
+              </div>
+              <span class="info-link-arrow">↗</span>
+            </a>
+            <a href="https://www.ecdc.europa.eu" target="_blank" rel="noopener" class="info-link">
+              <div class="info-link-icon">🇪🇺</div>
+              <div>
+                <div class="info-link-name">ECDC — European Centre for Disease Prevention</div>
+                <div class="info-link-desc">ecdc.europa.eu</div>
+              </div>
+              <span class="info-link-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-section-title">🦠 About Hantavirus (Andes Strain)</div>
+          <div class="info-facts">
+            <div class="info-fact"><span class="info-fact-label">Virus</span><span>Andes virus — a strain of hantavirus found in South America</span></div>
+            <div class="info-fact"><span class="info-fact-label">Transmission</span><span>Primarily rodent-borne (droppings, urine, saliva). Andes strain is the only hantavirus known to spread human-to-human, though rarely.</span></div>
+            <div class="info-fact"><span class="info-fact-label">Incubation</span><span>1–8 weeks</span></div>
+            <div class="info-fact"><span class="info-fact-label">Symptoms</span><span>Fever, headache, muscle aches, fatigue — can progress to severe respiratory distress (Hantavirus Pulmonary Syndrome)</span></div>
+            <div class="info-fact"><span class="info-fact-label">Mortality</span><span>~15–35% in confirmed cases. Argentina reported nearly 1 in 3 deaths in 2025–26.</span></div>
+            <div class="info-fact"><span class="info-fact-label">Treatment</span><span>No specific antiviral. Supportive care in ICU. Early intervention critical.</span></div>
+            <div class="info-fact"><span class="info-fact-label">Public risk</span><span>WHO considers risk to the general public LOW. "This is not SARS-CoV-2." — Dr. Maria Van Kerkhove, WHO</span></div>
+          </div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-section-title">🚢 MV Hondius — Voyage Summary</div>
+          <div class="info-facts">
+            <div class="info-fact"><span class="info-fact-label">Vessel</span><span>MV Hondius — Dutch-flagged expedition cruise ship operated by Oceanwide Expeditions</span></div>
+            <div class="info-fact"><span class="info-fact-label">Voyage</span><span>HDS2526 — Departed Ushuaia, Argentina on April 1, 2026 bound for Antarctica</span></div>
+            <div class="info-fact"><span class="info-fact-label">Exposure origin</span><span>Dutch index couple believed infected during wildlife/bird-watching excursion in Ushuaia; traveled Argentina, Chile, and Uruguay before boarding</span></div>
+            <div class="info-fact"><span class="info-fact-label">Current location</span><span>⚓ Docked — Port of Granadilla, Tenerife, Canary Islands. Disembarkation underway May 10, 2026.</span></div>
+            <div class="info-fact"><span class="info-fact-label">Deaths</span><span>3 — Dutch male (Apr 11), Dutch female (Apr 26), German female (May 2)</span></div>
+            <div class="info-fact"><span class="info-fact-label">WHO notified</span><span>May 2, 2026</span></div>
+            <div class="info-fact"><span class="info-fact-label">WHO response</span><span>Deployed onboard expert for medical assessment; shipped 2,500 diagnostic kits from Argentina to 5-country lab network; developing disembarkation guidance under International Health Regulations</span></div>
+            <div class="info-fact"><span class="info-fact-label">Investigation</span><span>Argentina's Malbrán Institute scientists traveling to Ushuaia to analyze rodents at local trash heap for Andes virus presence. Dutch couple visited sites where Andes-virus-carrying rats are known to be present.</span></div>
+            <div class="info-fact"><span class="info-fact-label">Ship status</span><span>⚓ Docked Granadilla, Tenerife — May 10. 147 aboard (23 nationalities). Repatriation flights underway Sun–Mon. After disembarkation: sails to Rotterdam (~5 days) for full disinfection. Crew + body of deceased passenger remain aboard. No luggage allowed off.</span></div>
+          </div>
+
+          <div class="info-section-title" style="margin-top:var(--space-4)">📅 Official Voyage Timeline (Oceanwide Expeditions)</div>
+          <div class="info-facts">
+            <div class="info-fact"><span class="info-fact-label">Apr 1</span><span>Departed Ushuaia — <strong>175 aboard</strong> (114 guests, 61 crew)</span></div>
+            <div class="info-fact"><span class="info-fact-label">Apr 4–7</span><span>Stop at South Georgia Island</span></div>
+            <div class="info-fact"><span class="info-fact-label">Apr 13–16</span><span>Stop at Tristan da Cunha / Inaccessible / Nightingale Islands — 6 guests embark (islanders), 1 crew disembarks → <strong>180 aboard</strong> (120 guests, 60 crew)</span></div>
+            <div class="info-fact"><span class="info-fact-label">Apr 17</span><span>Stop at Gough Island</span></div>
+            <div class="info-fact"><span class="info-fact-label">Apr 21–24</span><span>Stop at St. Helena — 1 crew embarks, <strong>32 guests disembark</strong> (incl. Dutch couple P002/PEDB43) → <strong>149 aboard</strong> (88 guests, 61 crew)</span></div>
+            <div class="info-fact"><span class="info-fact-label">Apr 27</span><span>2 guests medevaced via Ascension Island — symptomatic British national (P003) + American partner (PUSPAR01) → <strong>147 aboard</strong> (86 guests, 61 crew)</span></div>
+            <div class="info-fact"><span class="info-fact-label">May 4</span><span>Original planned end of voyage at Praia, Cape Verde — ship detained</span></div>
+            <div class="info-fact"><span class="info-fact-label">May 6</span><span>3 more evacuated to Netherlands. Ship departs Cape Verde 7:15pm</span></div>
+            <div class="info-fact"><span class="info-fact-label">May 10</span><span>⚓ Docked Granadilla port, Tenerife — disembarkation underway · 🇫🇷 Medical charter departs ~12:00 local TFS → Paris · 🇪🇸 Spanish Air Force A310 "Reino de España" (T.22-2) departs ~13:00 local TFS → Gómez Ulla Central Defense Hospital, Madrid · Other nationalities coordinating</span></div>
+          </div>
+
+          <div class="info-section-title" style="margin-top:var(--space-4)">🌍 Current Passenger Manifest by Nationality</div>
+          <div class="info-manifest-grid">
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇦🇷</span><span class="info-manifest-country">Argentina</span><span class="info-manifest-count">1 guest</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇦🇺</span><span class="info-manifest-country">Australia</span><span class="info-manifest-count">4 guests</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇧🇪</span><span class="info-manifest-country">Belgium</span><span class="info-manifest-count">2 guests</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇨🇦</span><span class="info-manifest-country">Canada</span><span class="info-manifest-count">4 guests</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇫🇷</span><span class="info-manifest-country">France</span><span class="info-manifest-count">5 guests</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇩🇪</span><span class="info-manifest-country">Germany</span><span class="info-manifest-count">5 guests + 1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇬🇷</span><span class="info-manifest-country">Greece</span><span class="info-manifest-count">1 guest</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇬🇹</span><span class="info-manifest-country">Guatemala</span><span class="info-manifest-count">1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇮🇳</span><span class="info-manifest-country">India</span><span class="info-manifest-count">2 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇮🇪</span><span class="info-manifest-country">Ireland</span><span class="info-manifest-count">2 guests</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇮🇹</span><span class="info-manifest-country">Italy</span><span class="info-manifest-count">1 guest</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇯🇵</span><span class="info-manifest-country">Japan</span><span class="info-manifest-count">1 guest</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇲🇪</span><span class="info-manifest-country">Montenegro</span><span class="info-manifest-count">1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇳🇱</span><span class="info-manifest-country">Netherlands</span><span class="info-manifest-count">8 guests + 5 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇳🇿</span><span class="info-manifest-country">New Zealand</span><span class="info-manifest-count">1 guest</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇵🇭</span><span class="info-manifest-country">Philippines</span><span class="info-manifest-count">38 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇵🇱</span><span class="info-manifest-country">Poland</span><span class="info-manifest-count">1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇵🇹</span><span class="info-manifest-country">Portugal</span><span class="info-manifest-count">1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇷🇺</span><span class="info-manifest-country">Russia</span><span class="info-manifest-count">1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇪🇸</span><span class="info-manifest-country">Spain</span><span class="info-manifest-count">13 guests + 1 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇹🇷</span><span class="info-manifest-country">Turkey</span><span class="info-manifest-count">3 guests</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇬🇧</span><span class="info-manifest-country">United Kingdom</span><span class="info-manifest-count">19 guests + 3 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇺🇦</span><span class="info-manifest-country">Ukraine</span><span class="info-manifest-count">5 crew</span></div>
+            <div class="info-manifest-row"><span class="info-manifest-flag">🇺🇸</span><span class="info-manifest-country">United States</span><span class="info-manifest-count">17 guests</span></div>
+          </div>
+          <div style="font-size:var(--text-xs);color:var(--color-text-faint);margin-top:var(--space-2)">Source: Oceanwide Expeditions via USA Today, May 8 2026. Guest count includes 4 medical staff. Germany count excludes person who died May 2.</div>
+        </div>
+
+        <div class="info-section">
+          <div class="info-section-title">💬 Official Statements</div>
+          <div class="info-facts">
+            <div class="info-fact"><span class="info-fact-label">Dr. Tedros<br><span style="font-weight:400;text-transform:none;letter-spacing:0">WHO Director-General</span></span><span>"While this is a serious incident, WHO assesses the public health risk as low. More cases may be reported given the incubation period."</span></div>
+            <div class="info-fact"><span class="info-fact-label">Dr. Van Kerkhove<br><span style="font-weight:400;text-transform:none;letter-spacing:0">WHO</span></span><span>"I want to be unequivocal here: this is not SARS-CoV-2. This is not the start of a COVID pandemic."</span></div>
+            <div class="info-fact"><span class="info-fact-label">Dr. Mahamud<br><span style="font-weight:400;text-transform:none;letter-spacing:0">WHO Alert &amp; Response Director</span></span><span>"We believe this will be a limited outbreak if the public health measures are implemented and solidarity is shown across all countries."</span></div>
+          </div>
+        </div>
+
+        <div class="info-section info-section--credit">
+          <div class="info-section-title">👤 Tracker</div>
+          <p>Built and maintained by an independent researcher. Data updated daily from public sources.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- .tab-content -->
+
+  <!-- ===== CONTROLS BAR ===== -->
+  <div class="controls-bar">
+    <span class="controls-label">Filter</span>
+    <div class="controls-date-group">
+      <input type="date" id="ctrl-start" class="date-input" title="Start date">
+      <span class="controls-sep">→</span>
+      <input type="date" id="ctrl-end"   class="date-input" title="End date">
+      <span class="date-range-label" id="ctrl-range-label">All dates</span>
+      <button class="btn btn--ghost btn--sm" id="ctrl-reset">Reset</button>
+    </div>
+    <div class="controls-spacer"></div>
+  </div>
+
+</div><!-- .app-layout -->
+
+
+<!-- ===== CASE DETAIL PANEL ===== -->
+<div class="case-detail" id="case-detail">
+  <div class="case-detail-header">
+    <div>
+      <div style="font-size:var(--text-xs);color:var(--color-text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1px">Case</div>
+      <div class="case-detail-id" id="detail-id">—</div>
+    </div>
+    <button class="case-detail-close" id="case-detail-close">✕</button>
+  </div>
+  <div class="case-detail-body" id="detail-body"></div>
+</div>
+
+
+<!-- ===== ADD CASE MODAL ===== -->
+<div class="modal" id="case-modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <span style="font-size:18px">➕</span>
+      <span class="modal-title">Add New Case</span>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="case-form" novalidate>
+        <div class="form-grid">
+          <div class="form-section-title">Patient Information</div>
+          <div class="form-group"><label class="form-label">Name / Identifier</label><input type="text" id="f-name" class="form-input" placeholder="Patient P011"></div>
+          <div class="form-group"><label class="form-label">Status <span class="required">*</span></label>
+            <select id="f-status" class="form-select" required>
+              <option value="symptomatic">Monitoring — Symptomatic</option><option value="asymptomatic">Monitoring — Asymptomatic</option><option value="confirmed">Confirmed</option>
+              <option value="recovered">Recovered</option><option value="deceased">Deceased</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Age</label><input type="number" id="f-age" class="form-input" placeholder="35" min="0"></div>
+          <div class="form-group"><label class="form-label">Sex</label>
+            <select id="f-sex" class="form-select">
+              <option value="">Unknown</option><option value="M">Male</option><option value="F">Female</option><option value="O">Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Report Date <span class="required">*</span></label><input type="date" id="f-date" class="form-input" required></div>
+          <div class="form-group"><label class="form-label">Onset Date</label><input type="date" id="f-onset" class="form-input"></div>
+          <div class="form-group"><label class="form-label">Generation</label>
+            <select id="f-generation" class="form-select">
+              <option value="0">0 — Patient zero</option><option value="1">1 — Primary</option>
+              <option value="2">2 — Secondary</option><option value="3">3 — Tertiary</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Infected by (Case ID)</label><input type="text" id="f-infected-by" class="form-input" placeholder="P001"></div>
+
+          <div class="form-section-title">Location <span style="font-weight:400;text-transform:none;font-size:var(--text-xs)">(required for map placement)</span></div>
+          <div class="form-group"><label class="form-label">Latitude <span class="required">*</span></label><input type="number" id="f-lat" class="form-input" placeholder="40.7128" step="any" required></div>
+          <div class="form-group"><label class="form-label">Longitude <span class="required">*</span></label><input type="number" id="f-lng" class="form-input" placeholder="-74.0060" step="any" required></div>
+          <div class="form-group"><label class="form-label">City</label><input type="text" id="f-city" class="form-input" placeholder="New York"></div>
+          <div class="form-group"><label class="form-label">Country</label><input type="text" id="f-country" class="form-input" placeholder="USA"></div>
+          <div class="form-group form-group--full"><label class="form-label">Venue / Exposure site</label><input type="text" id="f-venue" class="form-input" placeholder="Hospital, ship cabin, airport…"></div>
+
+          <div class="form-section-title">Transport</div>
+          <div class="form-group"><label class="form-label">Type</label>
+            <select id="f-transport-type" class="form-select">
+              <option value="none">None</option><option value="flight">Flight</option>
+              <option value="ship">Ship</option><option value="train">Train</option><option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label class="form-label">Flight / Vessel ID</label><input type="text" id="f-transport-id" class="form-input" placeholder="KL902"></div>
+
+          <div class="form-section-title">Clinical Notes</div>
+          <div class="form-group form-group--full"><label class="form-label">Notes</label><textarea id="f-notes" class="form-textarea" placeholder="Symptoms, timeline, exposure history…"></textarea></div>
+          <div class="form-group form-group--full"><label class="form-label">Reporting Authority</label><input type="text" id="f-reporter" class="form-input" placeholder="CDC / Regional Health Dept…"></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn--ghost" id="modal-cancel">Cancel</button>
+      <button class="btn btn--primary" id="form-submit" form="case-form" type="submit">Add Case</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== SEAT TOOLTIP ===== -->
+<div class="seat-tooltip" id="seat-tooltip"></div>
+
+<!-- ===== TOASTS ===== -->
+<div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+
+<!-- ===== DISCLAIMER MODAL ===== -->
+<div class="disclaimer-modal" id="disclaimer-modal">
+  <div class="disclaimer-modal-overlay" onclick="DisclaimerSystem.closeModal()"></div>
+  <div class="disclaimer-modal-content">
+    <div class="disclaimer-modal-header">
+      <span style="font-size:18px;flex-shrink:0">⚠</span>
+      <div class="disclaimer-modal-title">OUTBREAK TRACKER — DATA DISCLAIMER</div>
+    </div>
+    <div class="disclaimer-modal-body">
+      <p>This tracker is a visualization tool for monitoring disease transmission chains and is <strong>NOT an official public health resource</strong>.</p>
+
+      <div class="disclaimer-section-title">DATA SOURCES &amp; LIMITATIONS</div>
+      <ul>
+        <li>Case data is manually entered from public sources (news reports, WHO briefings, official announcements)</li>
+        <li>Data may be incomplete, outdated, or contain errors from source reporting</li>
+        <li>Case status (suspected/confirmed) reflects information available at time of entry and may change</li>
+        <li>Laboratory-confirmed vs suspected cases are based on publicly reported information only</li>
+        <li>This tracker is NOT connected to official health authority databases or real-time reporting systems</li>
+      </ul>
+
+      <div class="disclaimer-section-title">TRANSMISSION CHAIN ACCURACY</div>
+      <ul>
+        <li>Transmission connections are based on available contact tracing data from public sources</li>
+        <li>Person-to-person transmission is inferred from reported exposure, not epidemiological investigation</li>
+        <li>Exposure timelines, flight manifests, and cabin assignments may be incomplete or approximate</li>
+        <li>Secondary transmission risk calculations are estimates only, not epidemiological predictions</li>
+      </ul>
+
+      <div class="disclaimer-section-title">OFFICIAL INFORMATION SOURCES</div>
+      <ul>
+        <li>WHO Emergency Response: <a href="https://www.who.int/emergencies" target="_blank" rel="noopener">who.int/emergencies</a></li>
+        <li>CDC Outbreak Tracking: <a href="https://www.cdc.gov/" target="_blank" rel="noopener">cdc.gov</a></li>
+        <li>ECDC (Europe): <a href="https://www.ecdc.europa.eu/" target="_blank" rel="noopener">ecdc.europa.eu</a></li>
+        <li>Local public health authorities in your region</li>
+      </ul>
+
+      <div class="disclaimer-section-title">INTENDED USE</div>
+      <p>Designed for personal research, situational awareness, and understanding transmission patterns.</p>
+      <div class="disclaimer-warning-box">
+        ⛔ DO NOT USE FOR: official contact tracing &nbsp;·&nbsp; public health decision-making &nbsp;·&nbsp; travel or quarantine decisions &nbsp;·&nbsp; medical advice
+      </div>
+
+      <div class="disclaimer-section-title">ACCURACY RESPONSIBILITY</div>
+      <p>Data entry and visualization are subject to human error. Always verify critical information with official health sources before making any decisions based on this tracker.</p>
+
+      <div class="disclaimer-meta">
+        <span>LAST UPDATED: <span id="disclaimer-date" style="color:rgba(255,215,0,0.6)">—</span></span>
+        <span>SYSTEM: EPITRACE v2.0 · RETRO BUILD</span>
+      </div>
+    </div>
+    <div class="disclaimer-modal-footer">
+      <label>
+        <input type="checkbox" id="disclaimer-no-show"> DO NOT SHOW ON STARTUP
+      </label>
+      <button class="disclaimer-close-btn" onclick="DisclaimerSystem.closeModal()">[ ACKNOWLEDGE &amp; CLOSE ]</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== READER MODE PANEL ===== -->
+<div id="reader-panel" class="reader-panel" aria-hidden="true">
+
+  <div class="reader-header">
+    <div class="reader-header-left">
+      <div class="reader-logo">📡</div>
+      <div>
+        <div class="reader-title">EpiTrace</div>
+        <div class="reader-sub">MV Hondius Hantavirus Outbreak · Live Updates</div>
+      </div>
+    </div>
+    <button class="reader-back-btn" id="btn-reader-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      Dashboard
+    </button>
+  </div>
+
+  <div class="reader-stats-bar" id="reader-stats-bar">
+    <div class="reader-stat reader-stat--total"><div class="reader-stat-num" id="rs-total">—</div><div class="reader-stat-label">Total Cases</div></div>
+    <div class="reader-stat reader-stat--deaths"><div class="reader-stat-num" id="rs-deaths">—</div><div class="reader-stat-label">Deaths</div></div>
+    <div class="reader-stat reader-stat--confirmed"><div class="reader-stat-num" id="rs-confirmed">—</div><div class="reader-stat-label">Confirmed</div></div>
+    <div class="reader-stat reader-stat--symptomatic"><div class="reader-stat-num" id="rs-symptomatic">—</div><div class="reader-stat-label">Symptomatic</div></div>
+    <div class="reader-stat reader-stat--asymptomatic"><div class="reader-stat-num" id="rs-asymptomatic">—</div><div class="reader-stat-label">Asymptomatic</div></div>
+    <div class="reader-stat reader-stat--recovered"><div class="reader-stat-num" id="rs-recovered">—</div><div class="reader-stat-label">Recovered</div></div>
+  </div>
+
+  <div class="reader-disclaimer">
+    ⚠️ <strong>Unofficial tracker.</strong> Data compiled from public news sources and WHO briefings. Not an official public health resource.
+  </div>
+
+  <div class="reader-controls">
+    <div class="reader-search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="reader-search" class="reader-search" placeholder="Search by name, country, location…" autocomplete="off">
+    </div>
+    <div class="reader-filter-row">
+      <button class="reader-filter-btn active" data-status="all">All</button>
+      <button class="reader-filter-btn" data-status="deceased">Deaths</button>
+      <button class="reader-filter-btn" data-status="confirmed">Confirmed</button>
+      <button class="reader-filter-btn" data-status="symptomatic">Symptomatic</button>
+      <button class="reader-filter-btn" data-status="asymptomatic">Asymptomatic</button>
+      <button class="reader-filter-btn" data-status="recovered">Recovered</button>
+    </div>
+  </div>
+
+  <div class="reader-cards" id="reader-cards">
+    <div class="reader-loading">Loading cases…</div>
+  </div>
+
+  <div class="reader-footer">
+    <p>Data updated from public sources including WHO, AP, and regional health authorities. <a href="https://www.who.int/emergencies" target="_blank" rel="noopener">WHO Emergency Response ↗</a></p>
+    <p style="margin-top:4px;opacity:0.6;font-size:12px">EpiTrace · Unofficial · Not for medical use</p>
+    <p style="margin-top:8px;opacity:0.7;font-size:12px">Built by <a href="https://breroz.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Bre</a> · <a href="https://linkedin.com/in/breroz" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">LinkedIn</a> · Hosted on <a href="https://railway.com?referralCode=Uk-qDl" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Railway</a></p>
+  </div>
+
+</div>
+
+<!-- ===== RAILWAY BADGE ===== -->
+<div class="railway-badge">
+  Built by <a href="https://breroz.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Bre</a> · <a href="https://linkedin.com/in/breroz" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">LinkedIn</a> · Hosted on <a href="https://railway.com?referralCode=Uk-qDl" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Railway</a> · <a href="https://replit.com/refer/breroz?ref_surface=sidebar" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Replit</a>
+</div>
+
+<!-- ===== NEW CASES POPUP ===== -->
+<div class="ncp-overlay" id="new-cases-popup" aria-modal="true" role="dialog" aria-labelledby="ncp-title">
+  <div class="ncp-modal">
+    <div class="ncp-header">
+      <div class="ncp-header-left">
+        <span class="ncp-icon">🆕</span>
+        <div>
+          <div class="ncp-title" id="ncp-title">NEW SINCE YOUR LAST VISIT</div>
+          <div class="ncp-subtitle" id="ncp-count">— cases added</div>
+        </div>
+      </div>
+      <button class="ncp-close" onclick="NewCasesPopup.close()" title="Close">✕</button>
+    </div>
+    <div class="ncp-list" id="ncp-list"></div>
+    <div class="ncp-footer">
+      <button class="ncp-btn-view" onclick="NewCasesPopup.close()">✓ Got it — Show me the map</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.28.1/cytoscape.min.js"></script>
+<script src="/static/js/app.js"></script>
+<script>
+const DisclaimerSystem = {
+  init() {
+    const el = document.getElementById('disclaimer-date');
+    if (el) el.textContent = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+    // Show banner
+    const banner = document.getElementById('disclaimer-banner');
+    const bannerDismissed = sessionStorage.getItem('epitrace_banner_dismissed');
+    if (banner && !bannerDismissed) {
+      document.body.classList.add('banner-visible');
+    } else if (banner) {
+      banner.style.display = 'none';
+    }
+
+    // Auto-open modal on first ever visit
+    const seen = localStorage.getItem('epitrace_disclaimer_v2');
+    if (!seen) this.openModal();
+  },
+
+  openModal() {
+    document.getElementById('disclaimer-modal')?.classList.add('open');
+  },
+
+  closeModal() {
+    document.getElementById('disclaimer-modal')?.classList.remove('open');
+    const cb = document.getElementById('disclaimer-no-show');
+    if (cb?.checked) localStorage.setItem('epitrace_disclaimer_v2', '1');
+  },
+
+  dismissBanner() {
+    const banner = document.getElementById('disclaimer-banner');
+    if (banner) banner.style.display = 'none';
+    document.body.classList.remove('banner-visible');
+    sessionStorage.setItem('epitrace_banner_dismissed', '1');
+  }
+};
+document.addEventListener('DOMContentLoaded', () => {
+  DisclaimerSystem.init();
+  // Bookmark banner
+  const bb = document.getElementById('bookmark-banner');
+  if (bb) {
+    if (sessionStorage.getItem('epitrace_bookmark_dismissed')) {
+      bb.style.display = 'none';
+    } else {
+      document.body.classList.add('bookmark-visible');
+    }
+  }
+});
+
+// ============================================================================
+// READER MODE
+// ============================================================================
+const ReaderMode = {
+  _active: false,
+  _cases: [],
+  _filter: 'all',
+  _search: '',
+
+  STATUS_LABEL: { confirmed:'Confirmed', suspected:'Suspected', recovered:'Recovered', deceased:'Deceased' },
+  STATUS_COLOR:  { confirmed:'#dc2626', suspected:'#d97706', recovered:'#16a34a', deceased:'#6b7280' },
+  STATUS_BG:     { confirmed:'#fef2f2', suspected:'#fffbeb', recovered:'#f0fdf4', deceased:'#f9fafb' },
+
+  init() {
+    document.getElementById('btn-reader-toggle')?.addEventListener('click', () => this.open());
+    document.getElementById('btn-reader-back')?.addEventListener('click',   () => this.close());
+
+    document.getElementById('reader-search')?.addEventListener('input', e => {
+      this._search = e.target.value.toLowerCase();
+      this.render();
+    });
+
+    document.querySelectorAll('.reader-filter-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        document.querySelectorAll('.reader-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this._filter = btn.dataset.status;
+        this.render();
+      });
+    });
+
+    if (localStorage.getItem('epitrace_reader_mode') === '1') this.open();
+  },
+
+  async open() {
+    this._active = true;
+    localStorage.setItem('epitrace_reader_mode', '1');
+    const panel = document.getElementById('reader-panel');
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Load cases if not yet loaded
+    if (this._cases.length === 0) await this.load();
+    this.render();
+  },
+
+  close() {
+    this._active = false;
+    localStorage.removeItem('epitrace_reader_mode');
+    const panel = document.getElementById('reader-panel');
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  },
+
+  async load() {
+    try {
+      const [casesData, statsData] = await Promise.all([
+        fetch('/api/cases').then(r => r.json()),
+        fetch('/api/stats').then(r => r.json()),
+      ]);
+      this._cases = casesData.cases || [];
+      this._updateStats(statsData);
+    } catch(e) {
+      document.getElementById('reader-cards').innerHTML = '<div class="reader-loading">Failed to load cases. Please refresh.</div>';
+    }
+  },
+
+  _updateStats(s) {
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val ?? '—'; };
+    set('rs-total',     s.total);
+    set('rs-deaths',    s.deceased);
+    set('rs-confirmed', s.confirmed);
+    set('rs-suspected', s.suspected);
+    set('rs-recovered', s.recovered);
+  },
+
+  _flag(nationality) {
+    const map = {
+      'Dutch':'🇳🇱','Netherlands':'🇳🇱','British':'🇬🇧','UK':'🇬🇧',
+      'German':'🇩🇪','Germany':'🇩🇪','Swiss':'🇨🇭','Switzerland':'🇨🇭',
+      'Argentine':'🇦🇷','Argentina':'🇦🇷','Israeli':'🇮🇱','Israel':'🇮🇱',
+      'American':'🇺🇸','USA':'🇺🇸','South African':'🇿🇦','South Africa':'🇿🇦',
+    };
+    return map[nationality] || '🌐';
+  },
+
+  render() {
+    const container = document.getElementById('reader-cards');
+    if (!container) return;
+
+    let cases = this._cases;
+
+    // Filter by status
+    if (this._filter !== 'all') cases = cases.filter(c => c.status === this._filter);
+
+    // Filter by search
+    if (this._search) {
+      const q = this._search;
+      cases = cases.filter(c =>
+        (c.name||'').toLowerCase().includes(q) ||
+        (c.nationality||'').toLowerCase().includes(q) ||
+        (c.location?.city||'').toLowerCase().includes(q) ||
+        (c.location?.country||'').toLowerCase().includes(q) ||
+        (c.id||'').toLowerCase().includes(q)
+      );
+    }
+
+    if (cases.length === 0) {
+      container.innerHTML = '<div class="reader-loading">No cases match your search.</div>';
+      return;
+    }
+
+    container.innerHTML = cases.map(c => {
+      const status    = c.status || 'suspected';
+      const color     = this.STATUS_COLOR[status] || '#6b7280';
+      const bg        = this.STATUS_BG[status]    || '#f9fafb';
+      const label     = this.STATUS_LABEL[status] || status;
+      const flag      = this._flag(c.nationality);
+      const loc       = [c.location?.city, c.location?.country].filter(Boolean).join(', ') || '—';
+      const date      = c.onset_date || c.date || null;
+      const dateStr   = date ? new Date(date + 'T00:00:00').toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'}) : '—';
+      const notes     = c.clinical_notes || '';
+      const shortNote = notes.length > 160 ? notes.slice(0, 160).replace(/\s+\S*$/, '') + '…' : notes;
+      const isDupe    = notes.startsWith('⚠️ LIKELY DUPLICATE');
+      const isGroup   = (c.name || '').includes('—') || c.id === 'PGRP01';
+
+      return `<div class="reader-card${isDupe ? ' reader-card--dupe' : ''}" style="border-left-color:${color}">
+        <div class="reader-card-top">
+          <span class="reader-status-badge" style="background:${bg};color:${color}">${label}</span>
+          ${isDupe ? '<span class="reader-dupe-badge">Possible duplicate</span>' : ''}
+          ${isGroup ? '<span class="reader-group-badge">Group</span>' : ''}
+          <span class="reader-card-id">${this._esc(c.id)}</span>
+        </div>
+        <div class="reader-card-name">${flag} ${this._esc(c.name || 'Unknown')}</div>
+        <div class="reader-card-meta">
+          ${c.age ? `<span>${c.age}yo</span>` : ''}
+          ${c.sex ? `<span>${c.sex === 'M' || c.sex === 'male' ? 'Male' : c.sex === 'F' || c.sex === 'female' ? 'Female' : c.sex}</span>` : ''}
+          ${c.nationality ? `<span>${this._esc(c.nationality)}</span>` : ''}
+          ${c.generation !== null && c.generation !== undefined ? `<span>Gen ${c.generation}</span>` : ''}
+        </div>
+        <div class="reader-card-loc">📍 ${this._esc(loc)} &nbsp;·&nbsp; 📅 ${dateStr}</div>
+        ${shortNote ? `<div class="reader-card-notes">${this._esc(shortNote)}</div>` : ''}
+        ${c.source_url ? `<a href="${this._esc(c.source_url)}" target="_blank" rel="noopener" class="reader-card-source">↗ Source</a>` : ''}
+      </div>`;
+    }).join('');
+  },
+
+  _esc(s) {
+    if (!s) return '';
+    const d = document.createElement('div');
+    d.textContent = String(s);
+    return d.innerHTML;
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => ReaderMode.init());
+</script>
+</body>
+</html>

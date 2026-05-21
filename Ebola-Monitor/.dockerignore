@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.local
+.env*.local
+dist
+coverage
+*.log
+*.md
+!README.md
+playwright-report
+test-results
+scripts/explore-site-v2.ts
+src/lib/ingest-v2.ts
