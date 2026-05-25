@@ -216,7 +216,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="6 hours" />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta name="google-adsense-account" content="ca-pub-2896982474245057" />
 
         {/* Google Search Console verification */}
         <meta name="google-site-verification" content="99Piz242wQqsUXIGWCqvWpnGaMwwU356sdZd73ppoLA" />
@@ -235,11 +234,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd),
           }}
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2896982474245057"
-          crossOrigin="anonymous"
         />
       </head>
       <body>

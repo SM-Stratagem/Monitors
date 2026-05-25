@@ -1,5 +1,6 @@
 "use client";
 
+import { AdSenseUnit } from "@/components/adsense-unit";
 import { generateBreadcrumbSchema, breadcrumbs } from "@/lib/breadcrumb-schema";
 
 export default function HantavirusGuide101Page() {
@@ -394,6 +395,17 @@ export default function HantavirusGuide101Page() {
               </a>
             </li>
           </ul>
+        </section>
+
+        <AdSenseUnit className="article-ad" label="Sponsored placement" />
+
+        <section aria-label="Publisher note" className="publisher-note">
+          <h2>Publisher note</h2>
+          <p>
+            This guide exists to give the tracker real editorial value outside of the live dashboard. It explains the
+            biology, transmission routes, treatment constraints, and prevention steps in full before showing any
+            advertising placement.
+          </p>
         </section>
       </article>
 

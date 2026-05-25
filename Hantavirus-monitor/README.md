@@ -82,6 +82,11 @@ npm run ingest:once
 - `GET /api/snapshots/countries` latest materialized country stats
 - `GET /api/snapshots/timeline` latest materialized timeline
 
+## AdSense Placement
+
+Google ads are intentionally limited to long-form editorial pages such as the article and guide routes.
+The dashboard, support, and utility screens stay ad-free so the site does not serve Google ads on low-content or alert-style pages.
+
 ## Ingestion pipeline (v2)
 
 The scheduled job (`npm run ingest:once`) now:
