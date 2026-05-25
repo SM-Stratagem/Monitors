@@ -2,34 +2,78 @@ import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/site-url";
 import { getBaseUrlFromRequest } from "@/lib/request-url";
 
+// Major search engines — honor robots directives, ignore Crawl-delay.
+// We omit crawlDelay here so Google/Bing crawl at full speed.
+const SEARCH_BOTS = [
+  "Googlebot",
+  "Googlebot-Image",
+  "Googlebot-News",
+  "Bingbot",
+  "Slurp",
+  "DuckDuckBot",
+  "YandexBot",
+  "Baiduspider",
+  "Applebot",
+];
+
+// AI / LLM crawlers — allowed, but rate-limited via crawlDelay to protect the origin.
+// Most of these DO honor Crawl-delay (unlike Googlebot).
+const AI_BOTS = [
+  "GPTBot",
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "ClaudeBot",
+  "Claude-Web",
+  "Claude-SearchBot",
+  "anthropic-ai",
+  "Google-Extended",
+  "PerplexityBot",
+  "Perplexity-User",
+  "YouBot",
+  "Applebot-Extended",
+  "Meta-ExternalAgent",
+  "Meta-ExternalFetcher",
+  "cohere-ai",
+  "Bytespider",
+  "Amazonbot",
+  "Diffbot",
+  "Timpibot",
+  "Omgilibot",
+  "CCBot",
+  "DuckAssistBot",
+  "MistralAI-User",
+];
+
+const COMMON_DISALLOW = [
+  "/api/ingest",
+  "/api/pipeline/",
+  "/_next/",
+  "/node_modules/",
+  "/*?utm_*",
+  "/*?ref=*",
+];
+
 export default async function robots(): Promise<MetadataRoute.Robots> {
   const siteUrl = ((await getBaseUrlFromRequest()) ?? getSiteUrl()).replace(/\/+$/, "");
 
   return {
     rules: [
+      // Default — every other bot. Modest crawl-delay to prevent runaway scrapers.
       {
         userAgent: "*",
-        allow: [
-          "/",
-          "/support",
-          "/llms.txt",
-          "/ai.txt",
-          "/sitemap.xml",
-          "/opengraph-image",
-          "/twitter-image",
-          "/icon",
-          "/apple-icon",
-        ],
-        disallow: [
-          "/api/ingest",
-          "/api/pipeline/",
-          "/_next/",
-          "/node_modules/",
-        ],
+        allow: "/",
+        disallow: COMMON_DISALLOW,
         crawlDelay: 2,
       },
+      // Search engines — full speed.
       {
-        userAgent: ["GPTBot", "ChatGPT-User", "Google-Extended", "anthropic-ai", "ClaudeBot", "PerplexityBot", "YouBot", "Applebot-Extended"],
+        userAgent: SEARCH_BOTS,
+        allow: "/",
+        disallow: COMMON_DISALLOW,
+      },
+      // AI / LLM crawlers — explicitly allowed, rate-limited.
+      {
+        userAgent: AI_BOTS,
         allow: [
           "/",
           "/llms.txt",
@@ -42,31 +86,13 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
           "/api/quarantine",
           "/api/disease-info",
           "/api/reddit",
+          "/api/feed.json",
         ],
-        disallow: [
-          "/api/ingest",
-          "/api/pipeline/",
-          "/_next/",
-        ],
+        disallow: COMMON_DISALLOW,
         crawlDelay: 5,
-      },
-      {
-        userAgent: ["Googlebot", "bingbot", "YandexBot", "DuckDuckBot"],
-        allow: [
-          "/",
-          "/support",
-          "/llms.txt",
-          "/ai.txt",
-          "/sitemap.xml",
-        ],
-        disallow: [
-          "/api/ingest",
-          "/api/pipeline/",
-          "/_next/",
-        ],
-        crawlDelay: 1,
       },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

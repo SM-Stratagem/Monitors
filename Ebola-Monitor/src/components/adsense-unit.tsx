@@ -26,7 +26,7 @@ export function AdSenseUnit({ label = "Advertisement", slot, className = "" }: A
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch {
-        // Ad blockers and blocked third-party scripts can throw here.
+        // Ignore blocked or unavailable AdSense runtime cases.
       }
     }
   }, [client, resolvedSlot]);

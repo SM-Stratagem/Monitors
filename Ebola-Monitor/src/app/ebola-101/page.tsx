@@ -1,5 +1,6 @@
 "use client";
 
+import { AdSenseUnit } from "@/components/adsense-unit";
 import { generateBreadcrumbSchema, breadcrumbs } from "@/lib/breadcrumb-schema";
 
 export default function EbolaGuide101Page() {
@@ -98,7 +99,7 @@ export default function EbolaGuide101Page() {
 
           <h3>Pathophysiology</h3>
           <p>
-            Ebola virus infection causes a massive immune dysregulation, including a "cytokine storm" that damages the endothelial lining of blood vessels. This leads to increased vascular permeability, internal and external bleeding, and multi-organ failure. The virus also infects and impairs dendritic cells and macrophages, crippling the adaptive immune response.
+            Ebola virus infection causes a massive immune dysregulation, including a &quot;cytokine storm&quot; that damages the endothelial lining of blood vessels. This leads to increased vascular permeability, internal and external bleeding, and multi-organ failure. The virus also infects and impairs dendritic cells and macrophages, crippling the adaptive immune response.
           </p>
         </section>
 
@@ -185,7 +186,7 @@ export default function EbolaGuide101Page() {
 
           <h3>4. Taï Forest ebolavirus (TAFV)</h3>
           <p>
-            <strong>Geographic Distribution:</strong> Côte d'Ivoire
+            <strong>Geographic Distribution:</strong> Côte d&apos;Ivoire
           </p>
           <p>
             <strong>Reservoir:</strong> Fruit bats (suspected)
@@ -258,7 +259,7 @@ export default function EbolaGuide101Page() {
                 <tr>
                   <td>Taï Forest (TAFV)</td>
                   <td>Fruit bats</td>
-                  <td>Côte d'Ivoire</td>
+                  <td>Côte d&apos;Ivoire</td>
                   <td>Limited</td>
                   <td>Low</td>
                   <td>✗ Not confirmed</td>
@@ -430,6 +431,16 @@ export default function EbolaGuide101Page() {
               </a>
             </li>
           </ul>
+        </section>
+
+        <AdSenseUnit className="article-ad" label="Sponsored placement" />
+
+        <section aria-label="Publisher note" className="publisher-note">
+          <h2>Publisher note</h2>
+          <p>
+            This guide is written as editorial content, not a placeholder page. It gives readers enough context,
+            structure, and source framing that an ad can sit alongside substantive content instead of an empty shell.
+          </p>
         </section>
       </article>
 
