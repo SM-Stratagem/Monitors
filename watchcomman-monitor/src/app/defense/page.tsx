@@ -14,6 +14,8 @@ const FEATURES = [
   { title: "Cyber threat intel", body: "CISA KEV catalog, NIST NVD critical CVEs (CVSS ≥ 7.0), breach disclosures — actionable for vulnerability response.", href: "/cyber" },
   { title: "Defense contracts", body: "Live procurement opportunities from SAM.gov (defense NAICS), EU TED (CPV 35*), UK MOD, and DSCA Foreign Military Sales.", href: "/contracts" },
   { title: "Theater dashboards", body: "Curated views over Ukraine, Taiwan, Red Sea, Korea, Levant — each with focused source set, AI brief, and adversary tracker.", href: "/theater" },
+  { title: "Maritime intel", body: "Eight strategic chokepoints (Hormuz, Bab el-Mandeb, Suez, Malacca, Bosporus, Taiwan, Panama, Kerch) with live risk indicators from real-time signals.", href: "/ships" },
+  { title: "Military air tracker", body: "Every aircraft flagged as military in the open ADSB.lol database — global view, regional breakdown, emergency squawks, country from ICAO hex.", href: "/military" },
   { title: "Watchlists", body: "Track entities, regions, and keywords. Localstorage-only — your queries never leave the browser.", href: "/watchlist" },
   { title: "Briefing export", body: "One-page printable situation report — Save as PDF for analyst distribution. Filter by theater or watchlist.", href: "/briefing" },
 ];
