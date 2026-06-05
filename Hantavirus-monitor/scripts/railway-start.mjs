@@ -97,8 +97,10 @@ try {
 }
 
 // Prefer standalone output for smaller runtime footprint.
-log("Starting Next.js standalone server...");
-await run("node", [".next/standalone/server.js"], {
+// Cap V8 heap to keep Railway memory billing down; raise via WEB_MAX_OLD_SPACE_MB if traffic grows.
+const webHeapMb = process.env.WEB_MAX_OLD_SPACE_MB || "192";
+log(`Starting Next.js standalone server (max-old-space-size=${webHeapMb})...`);
+await run("node", [`--max-old-space-size=${webHeapMb}`, ".next/standalone/server.js"], {
   // Railway sets HOSTNAME to the container id. Next's standalone server will bind to HOSTNAME if set,
   // which prevents Railway healthchecks from reaching the app. Force 0.0.0.0.
   env: { ...process.env, PORT: port, HOSTNAME: "0.0.0.0" },

@@ -26,8 +26,14 @@ function isCronMode() {
 }
 
 if (isCronMode()) {
-  log("Starting one-off ingest job (cron mode)...");
-  await run("npm", ["run", "ingest:once"]);
+  const cronHeapMb = process.env.CRON_MAX_OLD_SPACE_MB || "384";
+  log(`Starting one-off ingest job (cron mode, max-old-space-size=${cronHeapMb})...`);
+  await run("npm", ["run", "ingest:once"], {
+    env: {
+      ...process.env,
+      NODE_OPTIONS: `${process.env.NODE_OPTIONS || ""} --max-old-space-size=${cronHeapMb}`.trim(),
+    },
+  });
   log("Ingest job finished; exiting.");
   process.exit(0);
 } else {
