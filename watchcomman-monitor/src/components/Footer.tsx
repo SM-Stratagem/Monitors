@@ -24,8 +24,9 @@ export function Footer({ lastIngestAt = null }: { lastIngestAt?: string | null }
         <div>
           <div className="wm-eyebrow" style={{ marginBottom: 12 }}>Watchcomman Monitor</div>
           <p style={{ color: "var(--ink-2)", fontSize: 13, lineHeight: 1.7, maxWidth: 320 }}>
-            A unified global monitoring surface aggregating live signals from independent
-            disease and environmental monitors. Built for situational clarity.
+            An independent open-source-intelligence platform aggregating live disease, disaster,
+            environmental, sanctions, cyber, and defense signals into one editorial dashboard.
+            Built for situational clarity.
           </p>
         </div>
         <div>
@@ -50,8 +51,11 @@ export function Footer({ lastIngestAt = null }: { lastIngestAt?: string | null }
         <div>
           <div className="wm-eyebrow" style={{ marginBottom: 12 }}>Reference</div>
           <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "grid", gap: 8, fontSize: 13 }}>
-            <li><Link href="/about">About the platform</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
+            <li><Link href="/about">About &amp; methodology</Link></li>
+            <li><Link href="/sources">Sources</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/privacy">Privacy policy</Link></li>
+            <li><Link href="/terms">Terms of use</Link></li>
             <li><a href="/api/dashboard">Public dashboard JSON</a></li>
           </ul>
         </div>

@@ -17,6 +17,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${country} — Country signals — Watchcomman Monitor`,
     description: `Live signals tracked for ${country} by Watchcomman Monitor: outbreaks, disasters, earthquakes, wildfires, and environmental events.`,
+    // Per-country pages are near-identical data views; keep them crawlable for users
+    // but out of the index so they don't dilute the site as thin content.
+    robots: { index: false, follow: true },
   };
 }
 

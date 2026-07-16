@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CommandPalette } from "./CommandPalette";
+import { MobileMenu } from "./MobileMenu";
 
 const PRIMARY = [
   { href: "/dashboard", label: "Dashboard" },
@@ -12,13 +13,18 @@ const INTEL = [
   { href: "/contracts", label: "Defense contracts", desc: "SAM · TED · UK · DSCA" },
   { href: "/ships", label: "Maritime", desc: "AIS · chokepoints · vessels" },
   { href: "/military", label: "Military air", desc: "ADSB military filter" },
+  { href: "/timeline", label: "Time machine", desc: "Scrub 24h to 30d" },
 ];
 
 const TOOLS = [
   { href: "/watchlist", label: "Watchlist", desc: "Track entities + keywords" },
-  { href: "/briefing", label: "Briefing PDF", desc: "Printable situation report" },
+  { href: "/briefing", label: "Briefing (HTML)", desc: "Printable situation report" },
+  { href: "/briefing.pdf?token=YOUR_TOKEN", label: "Briefing PDF", desc: "Supporter-only download" },
+  { href: "/globe", label: "3D Globe", desc: "Hand-shaded atlas" },
   { href: "/signals", label: "Signals", desc: "All raw events" },
   { href: "/map", label: "Map", desc: "Full-screen OSINT map" },
+  { href: "/source-health", label: "Source health", desc: "Per-feed status" },
+  { href: "/account", label: "My account", desc: "Supporter dashboard" },
   { href: "/sources", label: "Sources", desc: "Manage feed catalog" },
   { href: "/api-docs", label: "API", desc: "JSON / RSS endpoints" },
 ];
@@ -85,9 +91,10 @@ export function Header() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <CommandPalette />
-          <span className="wm-pill" style={{ fontSize: 9.5 }}>
+          <span className="wm-pill wm-live-pill" style={{ fontSize: 9.5 }}>
             <span className="wm-dot" /> LIVE
           </span>
+          <MobileMenu />
         </div>
       </div>
       <style>{`
@@ -144,6 +151,7 @@ export function Header() {
         .wm-nav-dropdown .wm-nav-desc { font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
         @media (max-width: 880px) {
           .wm-nav { display: none !important; }
+          .wm-live-pill { display: none !important; }
         }
       `}</style>
     </header>

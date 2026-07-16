@@ -4,6 +4,7 @@ import { SignalRowItem } from "@/components/SignalRow";
 import { Sparkline } from "@/components/Sparkline";
 import { getDashboardSnapshot, getSignalsFiltered } from "@/lib/dashboard";
 import { severityColor, slugify, unslugify } from "@/lib/format";
+import { REGION_EDITORIAL, METHODOLOGY, DISCLAIMER } from "@/lib/editorial";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -69,6 +70,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           </a>
           <div className="wm-eyebrow" style={{ marginTop: 18 }}>Region</div>
           <h1 className="wm-display" style={{ fontSize: "clamp(36px, 5vw, 64px)", margin: "8px 0 18px" }}>{region}</h1>
+          {REGION_EDITORIAL[region] ? (
+            <p style={{ maxWidth: 720, color: "var(--ink-1)", fontSize: 16, lineHeight: 1.8 }}>
+              {REGION_EDITORIAL[region]}
+            </p>
+          ) : null}
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 18, marginTop: 24 }}>
             <div className="wm-glass" style={{ padding: 18 }}>
@@ -102,6 +108,18 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             <ul style={{ listStyle: "none", margin: "14px 0 0", padding: 0, borderTop: "1px solid var(--line)" }}>
               {rows.slice(0, 50).map((s) => <SignalRowItem key={s.id} s={s} />)}
             </ul>
+          </section>
+
+          <section style={{ marginTop: 44, maxWidth: 720 }}>
+            <h2 className="wm-display" style={{ fontSize: 24, fontWeight: 300, margin: "0 0 12px", letterSpacing: "-0.01em" }}>
+              How we rank and refresh signals
+            </h2>
+            {METHODOLOGY.map((para, i) => (
+              <p key={i} style={{ color: "var(--ink-2)", fontSize: 14, lineHeight: 1.75, marginTop: i === 0 ? 0 : 14 }}>{para}</p>
+            ))}
+            <p style={{ marginTop: 24, color: "var(--ink-3)", fontSize: 12.5, lineHeight: 1.7, borderTop: "1px solid var(--line)", paddingTop: 18 }}>
+              {DISCLAIMER}
+            </p>
           </section>
         </div>
       </main>
